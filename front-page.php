@@ -30,13 +30,9 @@
     <div class="start">
         <h1>Ouachita Hills Ministries</h1>
 
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Academy</a></li>
-            <li><a href="#">College</a></li>
-            <li><a href="#">Store</a></li>
-            <li><a href="#">Live</a></li>
-        </ul>
+        <?php wp_nav_menu(array(
+            'depth' => 1
+        )) ?>
     </div>
 
     <div class="news">

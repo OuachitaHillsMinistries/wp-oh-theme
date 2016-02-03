@@ -63,6 +63,8 @@ body {
 	color:white;
 	position:relative;
 	transition: background-color 0.2s ease;
+	margin:0 2px;
+	text-decoration: none;
 }
 
 .start li a:hover, .unslider-arrow:hover:after, .unslider-arrow:hover:before {
