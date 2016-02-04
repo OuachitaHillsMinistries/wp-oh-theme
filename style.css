@@ -17,6 +17,11 @@ body {
 	font-family: hk_grotesk, sans-serif;
 }
 
+#wpadminbar {
+	top:auto;
+	bottom:0;
+}
+
 .navbar {
 	border-radius: 0;
 }
