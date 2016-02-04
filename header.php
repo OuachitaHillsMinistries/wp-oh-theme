@@ -43,10 +43,7 @@
 						</li>
 					</ul>
 					<form class="navbar-form navbar-right" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search">
-						</div>
-						<button type="submit" class="btn btn-default">Submit</button>
+						<?php get_search_form(); ?>
 					</form>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
@@ -59,7 +56,7 @@
 			</section>
 			<nav id="menu" role="navigation">
 				<div id="search">
-				<?php get_search_form(); ?>
+
 				</div>
 				<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
 			</nav>
