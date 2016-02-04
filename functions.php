@@ -19,6 +19,7 @@ function blankslate_load_scripts()
 	$themeDir =  get_template_directory_uri();
 
 	wp_enqueue_style('ohUnsliderCss',$themeDir.'/css/unslider.css');
+	wp_enqueue_style('ohCss',get_stylesheet_uri());
 
 	wp_enqueue_script('ohUnslider',$themeDir . '/js/main.js',array('jquery'));
 	wp_enqueue_script('ohMain',$themeDir . '/unslider/src/js/unslider.js',array('jquery','ohUnslider'));
