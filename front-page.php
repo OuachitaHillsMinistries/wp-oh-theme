@@ -30,8 +30,12 @@
     <div class="start">
         <h1>Ouachita Hills Ministries</h1>
 
+        <?php echo 'changes taken 5' ?>
+
         <?php wp_nav_menu(array(
-            'depth' => 1
+            'depth' => 1,
+            'container' => false,
+            'items_wrap' => '%3$s'
         )) ?>
     </div>
 
