@@ -11,6 +11,18 @@ body {
 	font-family: hk_grotesk, sans-serif;
 }
 
+#wpadminbar {
+	top:auto;
+	bottom:0;
+}
+
+.navbar {
+	border-radius: 0;
+	height:5%;
+}
+
+/* === Home === */
+
 body.home {
 	text-align: center;
 	background-image: url('images/_A1P1213.JPG');
@@ -20,39 +32,25 @@ body.home {
 	background-attachment: fixed;
 }
 
-#wpadminbar {
-	top:auto;
-	bottom:0;
-}
-
-.navbar {
-	border-radius: 0;
-}
-
-.wrapper {
-	display:table;
-	margin:0 auto;
-	max-width:500px;
-}
-
 .home .wrapper {
+	display:table;
+	max-width:100%;
 	margin:20% auto 0 auto;
 }
 
-.start, .news, .content {
+.start, .news {
 	background-color:rgba(255,255,255,.7);
 	margin-bottom:20px;
 	box-shadow: 0 0 2px 2px rgba(0,0,0,.1);
 }
 
 .start {
-	padding: 10px 20px 20px 20px;
+	padding: 5%;
 }
 
 .start h1 {
-
 	font-weight:bold;
-	margin-bottom:20px;
+	margin-bottom:5%;
 }
 
 .start ul {
@@ -60,17 +58,16 @@ body.home {
 }
 
 .start li {
-	width:125px;
+	width:50%;
 	list-style: none;
-	margin:4px auto;
+	margin:.5em auto;
 }
 
 .start li a {
-	padding: 5px 10px 7px 10px;
+	padding: .5em;
 	display:block;
 	background-color:#337AB7;
 	color:white;
-	position:relative;
 	transition: background-color 0.2s ease;
 	margin:0 2px;
 	text-decoration: none;
@@ -132,20 +129,37 @@ body.home {
 	content:'<';
 }
 
-.content {
-	text-align: left;
-	padding:20px;
-	margin:80px 0;
-	background-color:rgba(255,255,255,1);
+/* === Pages === */
+
+
+#container {
+	margin:5%;
+	overflow:hidden;
 }
+
+header {
+	float:left;
+	width:20%;
+}
+
+.entry-content {
+	margin-top:30px;
+	float:right;
+	width:80%;
+}
+
+
+/* === Media Queries === */
 
 @media all and (min-width: 500px) {
 	.start li {
 		width:auto;
-		margin:4px 2px;
+		margin:.2em .1em;
 		display:inline-block;
 	}
 }
+
+/* === Fonts === */
 
 @font-face {
 	font-family: 'hk_grotesk';

@@ -15,11 +15,9 @@
 					<div class="dropdown navbar-brand">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ouachita Hills Academy <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Home</a></li>
+							<li><a href="#">Ministries</a></li>
 							<li><a href="#">Academy</a></li>
 							<li><a href="#">College</a></li>
-							<li><a href="#">Store</a></li>
-							<li><a href="#">Live</a></li>
 						</ul>
 					</div>
 				</div>
