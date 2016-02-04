@@ -16,7 +16,12 @@ array( 'main-menu' => __( 'Main Menu', 'blankslate' ) )
 add_action( 'wp_enqueue_scripts', 'blankslate_load_scripts' );
 function blankslate_load_scripts()
 {
-	wp_enqueue_script( 'jquery' );
+	$themeDir =  get_template_directory_uri();
+
+	wp_enqueue_style('ohUnsliderCss',$themeDir.'/css/unslider.css');
+
+	wp_enqueue_script('ohUnslider',$themeDir . '/js/main.js',array('jquery'));
+	wp_enqueue_script('ohMain',$themeDir . '/unslider/src/js/unslider.js',array('jquery','ohUnslider'));
 }
 
 add_action( 'comment_form_before', 'blankslate_enqueue_comment_reply_script' );
