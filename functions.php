@@ -1,16 +1,19 @@
 <?php
+
 add_action( 'after_setup_theme', 'blankslate_setup' );
 function blankslate_setup()
 {
-load_theme_textdomain( 'blankslate', get_template_directory() . '/languages' );
-add_theme_support( 'title-tag' );
-add_theme_support( 'automatic-feed-links' );
-add_theme_support( 'post-thumbnails' );
-global $content_width;
-if ( ! isset( $content_width ) ) $content_width = 640;
-register_nav_menus(
-array( 'main-menu' => __( 'Main Menu', 'blankslate' ) )
-);
+	load_theme_textdomain( 'blankslate', get_template_directory() . '/languages' );
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'post-thumbnails' );
+	global $content_width;
+
+	if ( ! isset( $content_width ) ) $content_width = 640;
+
+	register_nav_menus(
+		array( 'main-menu' => __( 'Main Menu', 'blankslate' ) )
+	);
 }
 
 add_action( 'wp_enqueue_scripts', 'blankslate_load_scripts' );
@@ -75,3 +78,5 @@ return count( $comments_by_type['comment'] );
 return $count;
 }
 }
+
+require_once('wp_bootstrap_navwalker.php');
