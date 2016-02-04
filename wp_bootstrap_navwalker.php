@@ -34,7 +34,7 @@ class wp_bootstrap_navwalker extends Walker_Page {
 	 * @param int $current_page Menu item ID.
 	 * @param object $args
 	 */
-	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	public function start_el( &$output, $item, $depth = 0, $args = array(), $currentPageId = 0 ) {
 		//var_dump($item);
 		//var_dump($args);
 
@@ -52,7 +52,7 @@ class wp_bootstrap_navwalker extends Walker_Page {
 		if ( $args['walker']->has_children )
 			$class_names .= ' dropdown';
 
-		if ( in_array( 'current-menu-item', $classes ) )
+		if ( $item->ID == $currentPageId )
 			$class_names .= ' active';
 
 		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
