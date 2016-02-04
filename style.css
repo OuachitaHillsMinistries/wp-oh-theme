@@ -8,13 +8,16 @@ License URI: https://www.gnu.org/licenses/gpl.html
 */
 
 body {
+	font-family: hk_grotesk, sans-serif;
+}
+
+body.home {
 	text-align: center;
 	background-image: url('images/_A1P1213.JPG');
 	background-size: cover;
 	background-repeat:no-repeat;
 	background-position: 50% 50%;
 	background-attachment: fixed;
-	font-family: hk_grotesk, sans-serif;
 }
 
 #wpadminbar {

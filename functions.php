@@ -16,15 +16,15 @@ array( 'main-menu' => __( 'Main Menu', 'blankslate' ) )
 add_action( 'wp_enqueue_scripts', 'blankslate_load_scripts' );
 function blankslate_load_scripts()
 {
-	$themeDir =  get_template_directory_uri();
+	$themeDir =  esc_url(get_template_directory_uri());
 
-	wp_enqueue_style('ohUnsliderCss',$themeDir.'/css/unslider.css');
-	wp_enqueue_style('ohBootstrapCss',$themeDir.'/css/bootstrap.min.css');
+	wp_enqueue_style('ohUnsliderCss',"$themeDir/css/unslider.css");
+	wp_enqueue_style('ohBootstrapCss',"$themeDir/css/bootstrap.min.css");
 	wp_enqueue_style('ohCss',get_stylesheet_uri());
 
-	wp_enqueue_script('ohBootstrap',$themeDir.'/js/bootstrap.min.js',array('jquery'));
-	wp_enqueue_script('ohUnslider',$themeDir.'/js/main.js',array('jquery'));
-	wp_enqueue_script('ohMain',$themeDir.'/unslider/src/js/unslider.js',array('jquery','ohUnslider'));
+	wp_enqueue_script('ohBootstrap',"$themeDir/js/bootstrap.min.js",array('jquery'));
+	wp_enqueue_script('ohUnslider',"$themeDir/js/main.js",array('jquery'));
+	wp_enqueue_script('ohMain',"$themeDir/unslider/src/js/unslider.js",array('jquery','ohUnslider'));
 }
 
 add_action( 'comment_form_before', 'blankslate_enqueue_comment_reply_script' );
