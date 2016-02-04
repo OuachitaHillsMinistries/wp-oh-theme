@@ -52,8 +52,14 @@ class wp_bootstrap_navwalker extends Walker_Page {
 		if ( $args['walker']->has_children )
 			$class_names .= ' dropdown';
 
-		if ( $item->ID == $currentPageId )
-			$class_names .= ' active';
+		if (!empty($currentPageId)) {
+			$current_page = get_post( $currentPageId );
+			if ( $current_page && in_array( $item->ID, $current_page->ancestors ) )
+				$class_names .= ' active';
+
+			if ( $item->ID == $currentPageId )
+				$class_names .= ' active';
+		}
 
 		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
