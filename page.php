@@ -3,9 +3,10 @@
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>
-	<header style="background-image: url('<?php echo $url ?>');" class="header jumbotron">
+	<div style="background-image: url('<?php echo $url ?>');" class="header jumbotron"></div>
+	<div class="meta">
 		<h1 class="entry-title"><?php the_title(); ?></h1> <?php edit_post_link(); ?>
-	</header>
+	</div>
 	<section class="entry-content">
 		<?php /*if ( has_post_thumbnail() ) { the_post_thumbnail(); }*/ ?>
 		<?php the_content(); ?>
