@@ -85,12 +85,16 @@ function blankslate_comments_number( $count ) {
 function ohImageGallery() {
 	if (is_callable('twp_the_post_images')) {
 		$images = twp_the_post_images();
-		//var_dump($images);
 		if ($images) {
-			$postId = get_the_ID();
-			$imageList = do_shortcode("[twp_post_images id=$postId]");
-			$gallery = "<div class='gallery'>$imageList</div>";
-			$slider = "<div class='slider'>$imageList</div>";
+			$imageList = '';
+			foreach ($images as $image) {
+				$url = wp_get_attachment_image_src($image->id,'large')[0];
+				$src = $image->url;
+				$format = '<li><a href="%s"><img src="%s" /></a></li>';
+				$imageList .= sprintf($format, $url, $src);
+			}
+			$gallery = "<div class='gallery'><ul>$imageList</ul></div>";
+			$slider = "<div class='slider'><ul>$imageList</ul></div>";
 			echo "<div class='images'>$gallery $slider</div>";
 		}
 	}
