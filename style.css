@@ -14,6 +14,7 @@ body {
 #wpadminbar {
 	top:auto;
 	bottom:0;
+	position: fixed;
 }
 
 .navbar {
@@ -148,15 +149,6 @@ body.home {
 
 .meta, .entry-content {
 	padding: 3%;
-	float:left;
-}
-
-.meta {
-	width:30%;
-}
-
-.entry-content {
-	width:60%;
 }
 
 /* === Footer === */
@@ -168,11 +160,23 @@ body.home {
 
 /* === Media Queries === */
 
-@media all and (min-width: 500px) {
+@media all and (min-width: 600px) {
 	.start li {
 		width:auto;
 		margin:.2em .1em;
 		display:inline-block;
+	}
+
+	.meta, .entry-content {
+		float:left;
+	}
+
+	.meta {
+		width:30%;
+	}
+
+	.entry-content {
+		width:60%;
 	}
 }
 
