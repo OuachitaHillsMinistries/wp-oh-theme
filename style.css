@@ -151,6 +151,19 @@ body.home {
 	padding: 3%;
 }
 
+.gallery ul {
+	padding:2em 0;
+}
+
+.gallery li {
+	display:inline-block;
+	margin-right:10px;
+}
+
+.images .slider {
+	display:none;
+}
+
 /* === Footer === */
 
 #footer {

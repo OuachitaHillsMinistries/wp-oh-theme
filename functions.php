@@ -82,9 +82,25 @@ function blankslate_comments_number( $count ) {
 	}
 }
 
-require_once( 'php-utils/wp_bootstrap_navwalker.php' );
+function ohImageGallery() {
+	if (is_callable('twp_the_post_images')) {
+		$images = twp_the_post_images();
+		//var_dump($images);
+		if ($images) {
+			$postId = get_the_ID();
+			$imageList = do_shortcode("[twp_post_images id=$postId]");
+			$gallery = "<div class='gallery'>$imageList</div>";
+			$slider = "<div class='slider'>$imageList</div>";
+			echo "<div class='images'>$gallery $slider</div>";
+		}
+	}
+}
+
+
 
 /* === Dependencies Management === */
+
+require_once( 'php-utils/wp_bootstrap_navwalker.php' );
 
 require_once( 'php-utils/class-tgm-plugin-activation.php' );
 add_action( 'tgmpa_register', 'ohThemeRegisterRequiredPlugins' );
