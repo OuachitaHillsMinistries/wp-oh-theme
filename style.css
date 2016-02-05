@@ -140,25 +140,30 @@ body.home {
 
 /* === Pages === */
 
-
-#container {
-	overflow:hidden;
-}
-
-.jumbotron, .entry-content {
-	padding:3%;
-}
-
 .jumbotron {
 	background-position: 50% 25%;
 	background-size: cover;
+	min-height:25%;
 }
 
-.jumbotron h1 {
-	background-color:rgba(255,255,255,.7);
-	box-shadow: 0 0 2px 2px rgba(0,0,0,.1);
-	display: table;
-	padding:.3em;
+.meta, .entry-content {
+	padding: 3%;
+	float:left;
+}
+
+.meta {
+	width:30%;
+}
+
+.entry-content {
+	width:60%;
+}
+
+/* === Footer === */
+
+#footer {
+	padding-bottom: 1em;
+	clear:both;
 }
 
 /* === Media Queries === */
