@@ -13,6 +13,18 @@
 		<?php /*if ( has_post_thumbnail() ) { the_post_thumbnail(); }*/ ?>
 		<?php the_content(); ?>
 		<div class="entry-links"><?php wp_link_pages(); ?></div>
+		<?php
+		if (is_callable('twp_the_post_images')) {
+			var_dump('hello');
+			$images = twp_the_post_images();
+			if ($images) {
+				$postId = get_the_ID();
+				$imageList = do_shortcode("[twp_post_images id=$postId]");
+				$imageSection = "<div class='images'>$imageList</div>";
+				echo $imageSection;
+			}
+		}
+		?>
 	</section>
 </article>
 <?php if ( ! post_password_required() ) comments_template( '', true ); ?>
