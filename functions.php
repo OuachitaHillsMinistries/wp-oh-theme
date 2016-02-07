@@ -120,6 +120,8 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize ) {
 	return $imageList;
 }
 
+add_editor_style( 'style.css' );
+
 
 /* === Dependencies Management === */
 
@@ -144,6 +146,12 @@ function  ohThemeRegisterRequiredPlugins() {
 		array(
 			'name'      => 'Shortcodes Ultimate',
 			'slug'      => 'shortcodes-ultimate',
+			'required'  => false,
+		),
+
+		array(
+			'name'      => 'Paste as Plain Text',
+			'slug'      => 'paste-as-plain-text',
 			'required'  => false,
 		),
 
