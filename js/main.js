@@ -44,8 +44,7 @@ jQuery(document).ready(function($) {
     slider.unslider({
         nav: false,
         autoplay: true,
-        animation: 'fade',
-        animateHeight: true
+        animation: 'fade'
     });
 
     var container = $('.images');
@@ -53,22 +52,17 @@ jQuery(document).ready(function($) {
     if (container.length) {
         var images = $('.gallery img');
         var gallery = $('.gallery');
-        var requiredWidth = 0;
 
-        images.each(function(i, image) {
-            requiredWidth += image['width'] + 10;
-        });
-
-        showOrHideGallery(requiredWidth, container, slider, gallery);
+        showOrHideGallery(container, slider, gallery);
 
         $(window).smartresize(function() {
-            showOrHideGallery(requiredWidth, container, slider, gallery);
+            showOrHideGallery(container, slider, gallery);
         });
     }
 
-    function showOrHideGallery(requiredWidth, container, slider, gallery) {
+    function showOrHideGallery(container, slider, gallery) {
         var availableWidth = container.width();
-        if (requiredWidth > availableWidth) {
+        if (availableWidth < 500) {
             slider.show();
             gallery.hide();
         } else {

@@ -23,7 +23,7 @@ body {
 }
 
 #container {
-	margin-top:4em;
+	margin:4em 0;
 }
 
 /* === Home === */
@@ -159,17 +159,33 @@ body.home {
 	margin:0;
 }
 
+.images {
+	margin-top:4em;
+}
+
 .gallery ul {
 	padding:2em 0;
 }
 
 .gallery li {
 	display:inline-block;
-	margin-right:10px;
+	margin:0 10px 10px 0;
 }
 
 .images .slider {
 	display:none;
+	width:100%;
+	padding-bottom:66%;
+}
+
+.images .slider a {
+	display:block;
+	text-align:center;
+	height:0;
+}
+
+.images .slider img {
+	max-width:100%;
 }
 
 /* === Footer === */
