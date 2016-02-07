@@ -147,6 +147,12 @@ function  ohThemeRegisterRequiredPlugins() {
 			'required'  => false,
 		),
 
+		array(
+			'name'      => 'Paste as Plain Text',
+			'slug'      => 'paste-as-plain-text',
+			'required'  => false,
+		),
+
 	);
 
 	$config = array(
