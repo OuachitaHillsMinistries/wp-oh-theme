@@ -120,6 +120,8 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize ) {
 	return $imageList;
 }
 
+add_editor_style( 'style.css' );
+
 
 /* === Dependencies Management === */
 
