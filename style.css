@@ -19,7 +19,11 @@ body {
 
 .navbar {
 	border-radius: 0;
-	height:5%;
+	height:3.6em;
+}
+
+#container {
+	margin-top:4em;
 }
 
 /* === Home === */
@@ -149,6 +153,10 @@ body.home {
 
 .meta, .entry-content {
 	padding: 3%;
+}
+
+.entry-title {
+	margin:0;
 }
 
 .gallery ul {

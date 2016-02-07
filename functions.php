@@ -23,10 +23,18 @@ function blankslate_load_scripts() {
 
 	wp_enqueue_style( 'ohUnsliderCss', "$themeDir/css/unslider.css" );
 	wp_enqueue_style( 'ohBootstrapCss', "$themeDir/css/bootstrap.min.css" );
+	wp_enqueue_style('ohLightboxCss',"$themeDir/js/lightbox2/css/lightbox.min.css");
 	wp_enqueue_style( 'ohCss', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'ohBootstrap', "$themeDir/js/bootstrap.min.js", array( 'jquery' ) );
 	wp_enqueue_script( 'ohUnslider', "$themeDir/js/main.js", array( 'jquery' ) );
+	wp_enqueue_script(
+		'ohLightboxJs',
+		"$themeDir/js/lightbox2/js/lightbox.min.js",
+		array('jquery'),
+		false,
+		true
+	);
 	wp_enqueue_script( 'ohMain', "$themeDir/unslider/src/js/unslider.js", array( 'jquery', 'ohUnslider' ) );
 }
 
@@ -86,20 +94,29 @@ function ohImageGallery() {
 	if (is_callable('twp_the_post_images')) {
 		$images = twp_the_post_images();
 		if ($images) {
-			$imageList = '';
-			foreach ($images as $image) {
-				$url = wp_get_attachment_image_src($image->id,'large')[0];
-				$src = $image->url;
-				$format = '<li><a href="%s"><img src="%s" /></a></li>';
-				$imageList .= sprintf($format, $url, $src);
-			}
-			$gallery = "<div class='gallery'><ul>$imageList</ul></div>";
-			$slider = "<div class='slider'><ul>$imageList</ul></div>";
+			$galleryList = makeImageList( $images, 'page_gallery' );
+			$sliderList = makeImageList( $images, 'page_slider' );
+			$gallery = "<div class='gallery'><ul>$galleryList</ul></div>";
+			$slider = "<div class='slider'><ul>$sliderList</ul></div>";
 			echo "<div class='images'>$gallery $slider</div>";
 		}
 	}
 }
 
+function makeImageList( $images, $lightboxPrefix ) {
+	$postId       = get_the_ID();
+	$lightboxData = $lightboxPrefix . $postId;
+	$imageList    = '';
+
+	foreach ( $images as $image ) {
+		$url    = wp_get_attachment_image_src( $image->id, 'large' )[0];
+		$src    = $image->url;
+		$format = '<li><a href="%s" data-lightbox="%s"><img src="%s" /></a></li>';
+		$imageList .= sprintf( $format, $url, $lightboxData, $src );
+	}
+
+	return $imageList;
+}
 
 
 /* === Dependencies Management === */
