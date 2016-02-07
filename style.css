@@ -14,11 +14,16 @@ body {
 #wpadminbar {
 	top:auto;
 	bottom:0;
+	position: fixed;
 }
 
 .navbar {
 	border-radius: 0;
-	height:5%;
+	height:3.6em;
+}
+
+#container {
+	margin:4em 0;
 }
 
 /* === Home === */
@@ -148,15 +153,39 @@ body.home {
 
 .meta, .entry-content {
 	padding: 3%;
-	float:left;
 }
 
-.meta {
-	width:30%;
+.entry-title {
+	margin:0;
 }
 
-.entry-content {
-	width:60%;
+.images {
+	margin-top:4em;
+}
+
+.gallery ul {
+	padding:2em 0;
+}
+
+.gallery li {
+	display:inline-block;
+	margin:0 10px 10px 0;
+}
+
+.images .slider {
+	display:none;
+	width:100%;
+	padding-bottom:66%;
+}
+
+.images .slider a {
+	display:block;
+	text-align:center;
+	height:0;
+}
+
+.images .slider img {
+	max-width:100%;
 }
 
 /* === Footer === */
@@ -168,11 +197,23 @@ body.home {
 
 /* === Media Queries === */
 
-@media all and (min-width: 500px) {
+@media all and (min-width: 600px) {
 	.start li {
 		width:auto;
 		margin:.2em .1em;
 		display:inline-block;
+	}
+
+	.meta, .entry-content {
+		float:left;
+	}
+
+	.meta {
+		width:30%;
+	}
+
+	.entry-content {
+		width:60%;
 	}
 }
 
