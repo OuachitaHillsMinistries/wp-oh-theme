@@ -126,6 +126,35 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize ) {
 
 /* === Navigation === */
 
+function getTopNavPageList() {
+	if (isAcademy() && !isCollege()) {
+		$academyId = getIdByTitle('Academy');
+		return wp_list_pages( array(
+			'child_of' => $academyId,
+			'depth'    => 3,
+			'title_li' => null,
+			'walker'   => new wp_bootstrap_navwalker(),
+			'echo'     => false
+		) );
+	} else if (isCollege() && !isAcademy()) {
+		$collegeId = getIdByTitle('College');
+		return wp_list_pages( array(
+			'child_of' => $collegeId,
+			'depth'    => 3,
+			'title_li' => null,
+			'walker'   => new wp_bootstrap_navwalker(),
+			'echo'     => false
+		) );
+	} else {
+		return wp_list_pages( array(
+			'depth'    => 2,
+			'title_li' => null,
+			'walker'   => new wp_bootstrap_navwalker(),
+			'echo'     => false
+		) );
+	}
+}
+
 function getTopLevelSection() {
 	if (isAcademy() && !isCollege()) {
 		return 'Academy';
@@ -179,9 +208,14 @@ function getAcademyUrl() {
 	return getUrlByTitle('Academy');
 }
 
-function getUrlByTitle( $title ) {
+function getIdByTitle($title)  {
 	$page = get_page_by_title( $title );
-	return get_permalink( $page->ID );
+	return $page->ID;
+}
+
+function getUrlByTitle( $title ) {
+	$id = getIdByTitle($title);
+	return get_permalink( $id );
 }
 
 /* Bootstrap Pills Walker */
