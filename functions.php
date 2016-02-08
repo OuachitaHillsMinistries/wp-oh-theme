@@ -126,6 +126,64 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize ) {
 
 /* === Navigation === */
 
+function getTopLevelSection() {
+	if (isAcademy() && !isCollege()) {
+		return 'Academy';
+	} else if (isCollege() && !isAcademy()) {
+		return 'College';
+	} else {
+		return 'Ministries';
+	}
+}
+
+function isAcademy() {
+	if (is_category('College') || is_home() || is_search()) {
+		return False;
+	} else if (relatesToCategory('Academy')) {
+		return True;
+	} else {
+		return False;
+	}
+}
+
+function isCollege() {
+	if (is_category('Academy') || is_home() || is_search()) {
+		return False;
+	} else if (relatesToCategory('College')) {
+		return True;
+	} else {
+		return False;
+	}
+}
+
+function relatesToCategory($category) {
+	return topParent()->post_title == $category || in_category($category) || is_category($category);
+}
+
+function topParent() {
+	$parents = get_post_ancestors( postID() );
+	return get_post(end($parents));
+}
+
+function postID() {
+	$url = explode('?', 'http://'.$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+	$ID = url_to_postid($url[0]);
+	return $ID;
+}
+
+function getCollegeUrl() {
+	return getUrlByTitle('College');
+}
+
+function getAcademyUrl() {
+	return getUrlByTitle('Academy');
+}
+
+function getUrlByTitle( $title ) {
+	$page = get_page_by_title( $title );
+	return get_permalink( $page->ID );
+}
+
 /* Bootstrap Pills Walker */
 
 class bootstrap_pills_walker extends Walker_Page {
