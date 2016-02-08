@@ -349,6 +349,12 @@ function  ohThemeRegisterRequiredPlugins() {
 			'required'  => false,
 		),
 
+		array(
+			'name'      => 'Unobtrusive Admin Bar',
+			'slug'      => 'unobtrusive-admin-bar',
+			'required'  => false,
+		),
+
 	);
 
 	$config = array(

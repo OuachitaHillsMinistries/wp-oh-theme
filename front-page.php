@@ -24,7 +24,7 @@
 
 		</div>
 
-		<script src="js/bootstrap.min.js"></script>
+		<?php wp_footer(); ?>
 	</body>
 
 </html>
