@@ -158,30 +158,21 @@ body.home {
 }
 
 .subpages {
-	margin:2em 2em 0 0;
+	margin:2em 2em 2em 0;
+	display:table;
 }
 
 .entry-content {
-	margin-top:1em;
+	margin:1em;
 	min-height:10em;
 }
 
 .entry-content .text {
-	-moz-column-width: 20em;
-	-webkit-column-width: 20em;
-	column-width: 20em;
-
-	-moz-column-gap: 2em;
-	-webkit-column-gap: 2em;
-	column-gap: 2em;
-	margin:0 6em 4em 0;
-}
-
-.entry-content .text.no-columns {
 	-moz-column-width: auto;
 	-webkit-column-width: auto;
 	column-width: auto;
 
+	margin:0 6em 4em 0;
 	max-width:40em;
 	float:left;
 }
@@ -193,6 +184,10 @@ body.home {
 .gallery li {
 	display:inline-block;
 	margin:0 10px 10px 0;
+}
+
+.images {
+	clear:both;
 }
 
 .images .slider {
@@ -235,6 +230,13 @@ body.home {
 	.meta {
 		width:20em;
 		position:absolute;
+	}
+}
+
+@media all and (min-width: 84em) {
+	.images {
+		clear:none;
+		overflow:hidden;
 	}
 }
 
