@@ -92,6 +92,10 @@ function blankslate_comments_number( $count ) {
 	}
 }
 
+add_editor_style( 'style.css' );
+
+/* === Image Galleries === */
+
 function ohImageGallery() {
 	if (is_callable('twp_the_post_images')) {
 		$images = twp_the_post_images();
@@ -113,16 +117,108 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize ) {
 	foreach ( $images as $image ) {
 		$url    = wp_get_attachment_image_src( $image->id, 'large' )[0];
 		$src    = wp_get_attachment_image_src( $image->id, $thumbSize )[0];
-		$format = '<li><a href="%s" data-lightbox="%s"><img src="%s" /></a></li>';
+		$format = '<li><a href="%s" data-lightbox="%s" class="thumbnail"><img src="%s" /></a></li>';
 		$imageList .= sprintf( $format, $url, $lightboxData, $src );
 	}
 
 	return $imageList;
 }
 
-add_editor_style( 'style.css' );
+/* === Navigation === */
 
-/* === Bootstrap Pills Walker === */
+function getTopNavPageList() {
+	if (isAcademy() && !isCollege()) {
+		$academyId = getIdByTitle('Academy');
+		return wp_list_pages( array(
+			'child_of' => $academyId,
+			'depth'    => 3,
+			'title_li' => null,
+			'walker'   => new wp_bootstrap_navwalker(),
+			'echo'     => false
+		) );
+	} else if (isCollege() && !isAcademy()) {
+		$collegeId = getIdByTitle('College');
+		return wp_list_pages( array(
+			'child_of' => $collegeId,
+			'depth'    => 3,
+			'title_li' => null,
+			'walker'   => new wp_bootstrap_navwalker(),
+			'echo'     => false
+		) );
+	} else {
+		return wp_list_pages( array(
+			'depth'    => 2,
+			'title_li' => null,
+			'walker'   => new wp_bootstrap_navwalker(),
+			'echo'     => false
+		) );
+	}
+}
+
+function getTopLevelSection() {
+	if (isAcademy() && !isCollege()) {
+		return 'Academy';
+	} else if (isCollege() && !isAcademy()) {
+		return 'College';
+	} else {
+		return 'Ministries';
+	}
+}
+
+function isAcademy() {
+	if (is_category('College') || is_home() || is_search()) {
+		return False;
+	} else if (relatesToCategory('Academy')) {
+		return True;
+	} else {
+		return False;
+	}
+}
+
+function isCollege() {
+	if (is_category('Academy') || is_home() || is_search()) {
+		return False;
+	} else if (relatesToCategory('College')) {
+		return True;
+	} else {
+		return False;
+	}
+}
+
+function relatesToCategory($category) {
+	return topParent()->post_title == $category || in_category($category) || is_category($category);
+}
+
+function topParent() {
+	$parents = get_post_ancestors( postID() );
+	return get_post(end($parents));
+}
+
+function postID() {
+	$url = explode('?', 'http://'.$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+	$ID = url_to_postid($url[0]);
+	return $ID;
+}
+
+function getCollegeUrl() {
+	return getUrlByTitle('College');
+}
+
+function getAcademyUrl() {
+	return getUrlByTitle('Academy');
+}
+
+function getIdByTitle($title)  {
+	$page = get_page_by_title( $title );
+	return $page->ID;
+}
+
+function getUrlByTitle( $title ) {
+	$id = getIdByTitle($title);
+	return get_permalink( $id );
+}
+
+/* Bootstrap Pills Walker */
 
 class bootstrap_pills_walker extends Walker_Page {
 	public function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {

@@ -183,7 +183,10 @@ body.home {
 
 .gallery li {
 	display:inline-block;
-	margin:0 10px 10px 0;
+}
+
+.gallery a {
+	margin:0 .5em .5em 0;
 }
 
 .images {
@@ -233,7 +236,7 @@ body.home {
 	}
 }
 
-@media all and (min-width: 84em) {
+@media all and (min-width: 85em) {
 	.images {
 		clear:none;
 		overflow:hidden;
