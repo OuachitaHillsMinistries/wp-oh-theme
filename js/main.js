@@ -39,40 +39,6 @@ jQuery(document).ready(function($) {
         animateHeight: true
     });
 
-    /* === Page Gallery & Slider === */
-
-    var slider = $('.images .slider');
-
-    slider.unslider({
-        nav: false,
-        autoplay: true,
-        animation: 'fade'
-    });
-
-    var container = $('.images');
-
-    if (container.length) {
-        var images = $('.gallery img');
-        var gallery = $('.gallery');
-
-        showOrHideGallery(container, slider, gallery);
-
-        $(window).smartresize(function() {
-            showOrHideGallery(container, slider, gallery);
-        });
-    }
-
-    function showOrHideGallery(container, slider, gallery) {
-        var availableWidth = container.width();
-        if (availableWidth < 500) {
-            slider.show();
-            gallery.hide();
-        } else {
-            slider.hide();
-            gallery.show();
-        }
-    }
-
     /* === Page Columns === */
 
     var text = $('.entry-content .text');
@@ -94,6 +60,42 @@ jQuery(document).ready(function($) {
 
         if (containerHeight > viewporHeight) {
             container.addClass('no-columns');
+        }
+    }
+
+    /* === Page Gallery & Slider === */
+
+    var slider = $('.images .slider');
+
+    slider.unslider({
+        nav: false,
+        autoplay: true,
+        animation: 'fade'
+    });
+
+    var container = $('.images');
+
+    if (container.length) {
+        var images = $('.gallery img');
+        var gallery = $('.gallery');
+
+        adjustImages(container, slider, gallery, text);
+
+        $(window).smartresize(function() {
+            adjustImages(container, slider, gallery, text);
+        });
+    }
+
+    function adjustImages(container, slider, gallery, content) {
+        var availableWidth = container.width();
+        var galleryIsSidebar = content.hasClass('no-columns');
+
+        if (availableWidth < 500 && !galleryIsSidebar) {
+            slider.show();
+            gallery.hide();
+        } else {
+            slider.hide();
+            gallery.show();
         }
     }
 });

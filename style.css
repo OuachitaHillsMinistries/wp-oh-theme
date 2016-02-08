@@ -170,21 +170,20 @@ body.home {
 	-moz-column-gap: 2em;
 	-webkit-column-gap: 2em;
 	column-gap: 2em;
+	margin:0 6em 4em 0;
 }
 
 .entry-content .text.no-columns {
 	-moz-column-width: auto;
 	-webkit-column-width: auto;
 	column-width: auto;
-	max-width:40em;
-}
 
-.images {
-	margin-top:2em;
+	max-width:40em;
+	float:left;
 }
 
 .gallery ul {
-	padding:2em 0;
+	padding:0;
 }
 
 .gallery li {
