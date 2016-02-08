@@ -126,6 +126,27 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize ) {
 
 /* === Navigation === */
 
+function subpageNav( $parentId ) {
+	$children = get_pages( array(
+		'child_of' => $parentId,
+		'parent'   => $parentId
+	) );
+
+	if ( ! empty( $children ) ) {
+		$currentId = get_the_ID();
+		$items     = '';
+
+		foreach ( $children as $child ) {
+			$isActive  = $child->ID == $currentId;
+			$extraAtts = ( $isActive ) ? ' class="active"' : '';
+			$format    = '<li%s><a href="%s">%s</a></li>';
+			$items .= sprintf( $format, $extraAtts, get_page_uri( $child ), $child->post_title );
+		}
+
+		echo "<ul class='subpages nav nav-pills nav-stacked'>$items</ul>";
+	}
+}
+
 function getTopNavPageList() {
 	if (isAcademy() && !isCollege()) {
 		$academyId = getIdByTitle('Academy');
