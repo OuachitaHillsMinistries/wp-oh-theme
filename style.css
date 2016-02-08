@@ -154,7 +154,11 @@ body.home {
 }
 
 .entry-title {
-	margin:0;
+	margin:0 0 0 .4em;
+}
+
+.subpages {
+	margin:2em 2em 0 0;
 }
 
 .entry-content {
