@@ -9,22 +9,27 @@
 	<div class="meta">
 		<?php
 		$parents = array_reverse(get_post_ancestors($post->ID));
-		$categoricalParent = get_post($parents[1]);
-		$title = get_the_title();
-		$firstParentChildren = get_children(array(
-			'post_parent' => $categoricalParent->ID,
-			'post_type' => 'page'
+		$sectionParent = get_post($parents[1]);
+
+		echo "<h1 class='entry-title'>$sectionParent->post_title</h1>";
+
+		$children = get_pages(array(
+			'child_of' => $sectionParent->ID,
+			'parent' => $sectionParent->ID
 		));
-		echo "<h1 class='entry-title'>$categoricalParent->post_title</h1>";
-		if (!empty($firstParentChildren)) {
-			$childLinks = wp_list_pages(array(
-				'child_of' => $categoricalParent->ID,
-				'title_li' => '',
-				'echo'     => false,
-				'depth'    => 2,
-				'walker'   => new bootstrap_pills_walker()
-			));
-			echo "<ul class='subpages nav nav-pills nav-stacked'>$childLinks</ul>";
+
+		if (!empty($children)) {
+			$currentId = get_the_ID();
+			$items = '';
+
+			foreach ($children as $child) {
+				$isActive = $child->ID == $currentId;
+				$extraAtts = ($isActive) ? ' class="active"' : '';
+				$format = '<li%s><a href="%s">%s</a></li>';
+				$items .= sprintf( $format, $extraAtts, get_page_uri($child), $child->post_title );
+			}
+
+			echo "<ul class='subpages nav nav-pills nav-stacked'>$items</ul>";
 		}
 		?>
 	</div>
