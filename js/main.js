@@ -39,6 +39,32 @@ jQuery(document).ready(function($) {
         animateHeight: true
     });
 
+    /* === Page Columns === */
+
+    var text = $('.entry-content .text');
+
+    if (text.length) {
+        setColumns(text);
+
+        $(window).smartresize(function() {
+            setColumns(text);
+        });
+    }
+
+    function setColumns(container) {
+        container.removeClass('no-columns');
+
+        var buffer = 200;
+        var containerHeight = container.height() + buffer;
+        var viewporHeight = $( window ).height();
+
+        if (containerHeight > viewporHeight) {
+            container.addClass('no-columns');
+        }
+    }
+
+    /* === Page Gallery & Slider === */
+
     var slider = $('.images .slider');
 
     slider.unslider({
@@ -53,16 +79,18 @@ jQuery(document).ready(function($) {
         var images = $('.gallery img');
         var gallery = $('.gallery');
 
-        showOrHideGallery(container, slider, gallery);
+        adjustImages(container, slider, gallery, text);
 
         $(window).smartresize(function() {
-            showOrHideGallery(container, slider, gallery);
+            adjustImages(container, slider, gallery, text);
         });
     }
 
-    function showOrHideGallery(container, slider, gallery) {
+    function adjustImages(container, slider, gallery, content) {
         var availableWidth = container.width();
-        if (availableWidth < 500) {
+        var galleryIsSidebar = content.hasClass('no-columns');
+
+        if (availableWidth < 500 && !galleryIsSidebar) {
             slider.show();
             gallery.hide();
         } else {
