@@ -92,6 +92,10 @@ function blankslate_comments_number( $count ) {
 	}
 }
 
+add_editor_style( 'style.css' );
+
+/* === Image Galleries === */
+
 function ohImageGallery() {
 	if (is_callable('twp_the_post_images')) {
 		$images = twp_the_post_images();
@@ -113,16 +117,16 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize ) {
 	foreach ( $images as $image ) {
 		$url    = wp_get_attachment_image_src( $image->id, 'large' )[0];
 		$src    = wp_get_attachment_image_src( $image->id, $thumbSize )[0];
-		$format = '<li><a href="%s" data-lightbox="%s"><img src="%s" /></a></li>';
+		$format = '<li><a href="%s" data-lightbox="%s" class="thumbnail"><img src="%s" /></a></li>';
 		$imageList .= sprintf( $format, $url, $lightboxData, $src );
 	}
 
 	return $imageList;
 }
 
-add_editor_style( 'style.css' );
+/* === Navigation === */
 
-/* === Bootstrap Pills Walker === */
+/* Bootstrap Pills Walker */
 
 class bootstrap_pills_walker extends Walker_Page {
 	public function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
