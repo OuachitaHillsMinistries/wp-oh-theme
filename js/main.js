@@ -39,30 +39,6 @@ jQuery(document).ready(function($) {
         animateHeight: true
     });
 
-    /* === Page Columns === */
-
-    var text = $('.entry-content .text');
-
-    if (text.length) {
-        setColumns(text);
-
-        $(window).smartresize(function() {
-            setColumns(text);
-        });
-    }
-
-    function setColumns(container) {
-        container.removeClass('no-columns');
-
-        var buffer = 200;
-        var containerHeight = container.height() + buffer;
-        var viewporHeight = $( window ).height();
-
-        if (containerHeight > viewporHeight) {
-            container.addClass('no-columns');
-        }
-    }
-
     /* === Page Gallery & Slider === */
 
     var slider = $('.images .slider');
@@ -74,6 +50,7 @@ jQuery(document).ready(function($) {
     });
 
     var container = $('.images');
+    var text = $('.entry-content .text');
 
     if (container.length) {
         var images = $('.gallery img');
@@ -86,16 +63,29 @@ jQuery(document).ready(function($) {
         });
     }
 
-    function adjustImages(container, slider, gallery, content) {
-        var availableWidth = container.width();
-        var galleryIsSidebar = content.hasClass('no-columns');
+    function adjustImages(images, slider, gallery, content) {
+        toggleSlider(images, slider, gallery);
+    }
 
-        if (availableWidth < 500 && !galleryIsSidebar) {
-            slider.show();
-            gallery.hide();
+    function toggleSlider(container, slider, gallery) {
+        var availableWidth = container.width();
+        var areImagesBelow = container.css('clear') == 'both';
+        var isEnoughSpace = availableWidth < 500;
+
+        if (areImagesBelow && isEnoughSpace) {
+            showSlider(slider, gallery);
         } else {
-            slider.hide();
-            gallery.show();
+            hideSlider(slider, gallery);
         }
+    }
+
+    function showSlider(slider, gallery) {
+        slider.show();
+        gallery.hide();
+    }
+
+    function hideSlider(slider, gallery) {
+        slider.hide();
+        gallery.show();
     }
 });
