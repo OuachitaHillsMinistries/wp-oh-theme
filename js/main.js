@@ -39,6 +39,8 @@ jQuery(document).ready(function($) {
         animateHeight: true
     });
 
+    /* === Page Gallery & Slider === */
+
     var slider = $('.images .slider');
 
     slider.unslider({
@@ -68,6 +70,30 @@ jQuery(document).ready(function($) {
         } else {
             slider.hide();
             gallery.show();
+        }
+    }
+
+    /* === Page Columns === */
+
+    var text = $('.entry-content .text');
+
+    if (text.length) {
+        setColumns(text);
+
+        $(window).smartresize(function() {
+            setColumns(text);
+        });
+    }
+
+    function setColumns(container) {
+        container.removeClass('no-columns');
+
+        var buffer = 200;
+        var containerHeight = container.height() + buffer;
+        var viewporHeight = $( window ).height();
+
+        if (containerHeight > viewporHeight) {
+            container.addClass('no-columns');
         }
     }
 });

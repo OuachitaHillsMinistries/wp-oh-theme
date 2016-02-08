@@ -159,6 +159,24 @@ body.home {
 
 .entry-content {
 	margin-top:1em;
+	min-height:10em;
+}
+
+.entry-content .text {
+	-moz-column-width: 20em;
+	-webkit-column-width: 20em;
+	column-width: 20em;
+
+	-moz-column-gap: 2em;
+	-webkit-column-gap: 2em;
+	column-gap: 2em;
+}
+
+.entry-content .text.no-columns {
+	-moz-column-width: auto;
+	-webkit-column-width: auto;
+	column-width: auto;
+	max-width:40em;
 }
 
 .images {
@@ -199,23 +217,21 @@ body.home {
 
 /* === Media Queries === */
 
-@media all and (min-width: 600px) {
+@media all and (min-width: 45em) {
 	.start li {
 		width:auto;
 		margin:.2em .1em;
 		display:inline-block;
 	}
 
-	.meta, .entry-content {
-		float:left;
+	.entry-content {
+		width:100%;
+		border-left:20em solid transparent;
 	}
 
 	.meta {
-		width:30%;
-	}
-
-	.entry-content {
-		width:60%;
+		width:20em;
+		position:absolute;
 	}
 }
 
