@@ -12,11 +12,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		$parents = array_reverse(get_post_ancestors($post->ID));
 		$sectionParent = get_post($parents[1]);
 		$parentId = $sectionParent->ID;
-
-		echo "<h1 class='entry-title'>$sectionParent->post_title</h1>";
-
-		subpageNav( $parentId );
 		?>
+		<h1 class='entry-title'><?php echo $sectionParent->post_title ?></h1>
+		<?php subpageNav( $parentId ); ?>
 	</div>
 	<section class="entry-content">
 		<div class="text">
