@@ -17,8 +17,7 @@ html body {
 }
 
 #container {
-	margin:4em 3em;
-	padding:2em 0;
+	padding:6em 3em;
 	overflow:hidden;
 }
 
@@ -171,6 +170,11 @@ body.home {
 	float:left;
 }
 
+.entry-content .text>*:first-child {
+	margin-top:0;
+	padding-top:0;
+}
+
 .gallery ul {
 	padding:0;
 }
@@ -205,26 +209,25 @@ body.home {
 
 /* === Footer === */
 
-#footer {
-	padding:2em 0;
-	clear:both;
-}
-
 html {
 	position: relative;
 	min-height: 100%;
 }
+
 body {
 	/* Margin bottom by footer height */
 	margin-bottom: 60px;
 }
+
 .footer {
+	padding:2em 3em 3em 3em;
+	clear:both;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	/* Set the fixed height of the footer here */
 	height: 60px;
-	background-color: #f5f5f5;
+	background-color: black;
 }
 
 /* === Media Queries === */
@@ -236,14 +239,9 @@ body {
 		display:inline-block;
 	}
 
-	.entry-content {
-		width:100%;
-		border-left:20em solid transparent;
-	}
-
 	.meta {
 		width:20em;
-		position:absolute;
+		float:left;
 	}
 }
 
