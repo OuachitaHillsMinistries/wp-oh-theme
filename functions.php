@@ -355,6 +355,12 @@ function  ohThemeRegisterRequiredPlugins() {
 			'required'  => false,
 		),
 
+/*		array(
+			'name'      => 'WP Search Suggest',
+			'slug'      => 'wp-search-suggest',
+			'required'  => false,
+		),*/
+
 	);
 
 	$config = array(
