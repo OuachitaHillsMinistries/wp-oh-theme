@@ -179,6 +179,10 @@ body.home {
 	padding-top:0;
 }
 
+.post-edit-link {
+	display:block;
+}
+
 .images {
 	clear:both;
 	margin:0 3em 3em 3em;
