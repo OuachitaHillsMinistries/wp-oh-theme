@@ -17,8 +17,8 @@ html body {
 }
 
 #container {
-	padding:6em 3em;
 	overflow:hidden;
+	padding-top:3em;
 }
 
 /* === Home === */
@@ -146,6 +146,10 @@ body.home {
 	min-height:25vh;
 }
 
+.meta {
+	margin:0 1em;
+}
+
 .entry-title {
 	margin:0 0 0 .4em;
 }
@@ -156,7 +160,7 @@ body.home {
 }
 
 .entry-content {
-	margin:1em;
+	margin:2em;
 	min-height:10em;
 }
 
@@ -175,20 +179,9 @@ body.home {
 	padding-top:0;
 }
 
-.gallery ul {
-	padding:0;
-}
-
-.gallery li {
-	display:inline-block;
-}
-
-.gallery a {
-	margin:0 .5em .5em 0;
-}
-
 .images {
 	clear:both;
+	margin:0 3em 3em 3em;
 }
 
 .images .slider {
@@ -205,6 +198,18 @@ body.home {
 
 .images .slider img {
 	max-width:100%;
+}
+
+.gallery ul {
+	padding:0;
+}
+
+.gallery li {
+	display:inline-block;
+}
+
+.gallery a {
+	margin:0 .5em .5em 0;
 }
 
 /* === Footer === */
@@ -242,6 +247,7 @@ body {
 	.meta {
 		width:20em;
 		float:left;
+		margin-left:3em;
 	}
 
 	.entry-content .text {
