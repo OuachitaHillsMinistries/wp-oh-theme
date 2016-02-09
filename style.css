@@ -165,7 +165,7 @@ body.home {
 	-webkit-column-width: auto;
 	column-width: auto;
 
-	margin:0 6em 4em 0;
+	margin:0 0 4em 0;
 	max-width:40em;
 	float:left;
 }
@@ -242,6 +242,10 @@ body {
 	.meta {
 		width:20em;
 		float:left;
+	}
+
+	.entry-content .text {
+		margin-right:6em;
 	}
 }
 
