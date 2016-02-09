@@ -361,6 +361,13 @@ function  ohThemeRegisterRequiredPlugins() {
 			'required'  => false,
 		),*/
 
+
+		array(
+			'name'      => 'Advanced Responsive Video Embedder',
+			'slug'      => 'advanced-responsive-video-embedder',
+			'required'  => true,
+		),
+
 	);
 
 	$config = array(
