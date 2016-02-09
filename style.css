@@ -185,7 +185,6 @@ body.home {
 
 .images {
 	clear:both;
-	margin:0 3em 3em 3em;
 }
 
 .images .slider {
@@ -259,10 +258,11 @@ body {
 	}
 }
 
-@media all and (min-width: 85em) {
+@media all and (min-width: 87em) {
 	.images {
 		clear:none;
 		overflow:hidden;
+		margin:0 3em 3em 3em;
 	}
 }
 
