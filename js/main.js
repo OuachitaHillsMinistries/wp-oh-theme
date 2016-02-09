@@ -39,6 +39,11 @@ jQuery(document).ready(function($) {
         animateHeight: true
     });
 
+    $('.recentPostsSlider').unslider({
+        nav: false,
+        autoplay: true
+    });
+
     /* === Page Gallery & Slider === */
 
     var slider = $('.images .slider');

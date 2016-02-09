@@ -94,6 +94,55 @@ function blankslate_comments_number( $count ) {
 
 add_editor_style( 'style.css' );
 
+/* === Recent Posts Slider === */
+
+function recentPostsSlider() {
+	$args = array(
+		'numberposts'      => 3,
+		'offset'           => 0,
+		'category'         => 0,
+		'orderby'          => 'post_date',
+		'order'            => 'DESC',
+		'post_type'        => 'post',
+		'post_status'      => 'draft, publish, future, pending, private',
+		'suppress_filters' => true
+	);
+
+	$recent_posts = wp_get_recent_posts( $args, ARRAY_A );
+	$mediaObjects = '';
+	foreach ( $recent_posts as $p ) {
+		$title   = $p['post_title'];
+		$image   = get_the_post_thumbnail( $p, 'thumbnail', array(
+			'class' => 'media-object'
+		) );
+		$url     = get_permalink( $p );
+		$excerpt = get_excerpt_by_id( $p['ID'] );
+
+		$mediaLeft   = "<div class='media-left'><a href='$url' class='thumbnail'>$image</a></div>";
+		$title       = "<h4 class='media-heading'><a href='$url'>$title</a></h4>";
+		$text        = "<p>$excerpt</p>";
+		$mediaBody   = "<div class='media-body'>{$title}{$text}</div>";
+		$mediaObject = '<div class="media">' . $mediaLeft . $mediaBody . '</div>';
+		$mediaObjects .= '<li>' . $mediaObject . '</li>';
+	}
+	echo "<div class='recentPostsSlider'><ul>$mediaObjects</ul></div>";
+}
+
+function get_excerpt_by_id($post_id){
+	$the_post = get_post($post_id); //Gets post ID
+	$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
+	$excerpt_length = 35; //Sets excerpt length by word count
+	$the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
+	$words = explode(' ', $the_excerpt, $excerpt_length + 1);
+	if(count($words) > $excerpt_length) :
+		array_pop($words);
+		array_push($words, '…');
+		$the_excerpt = implode(' ', $words);
+	endif;
+	$the_excerpt = '<p>' . $the_excerpt . '</p>';
+	return $the_excerpt;
+}
+
 /* === Image Galleries === */
 
 function ohImageGallery() {

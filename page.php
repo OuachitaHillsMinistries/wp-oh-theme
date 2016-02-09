@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 <section id="content" role="main">
-<?php
-if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
 	$heroUrl = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
@@ -18,6 +17,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 	</div>
 	<section class="entry-content">
 		<div class="text">
+			<?php recentPostsSlider(); ?>
 			<?php the_content(); ?>
 			<?php edit_post_link(); ?>
 		</div>
