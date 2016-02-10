@@ -29,7 +29,7 @@ function blankslate_load_scripts() {
 	wp_enqueue_style( 'ohCss', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'ohBootstrap', "$themeDir/js/bootstrap.min.js", array( 'jquery' ) );
-	wp_enqueue_script( 'ohUnslider', "$themeDir/js/main.js", array( 'jquery' ) );
+	wp_enqueue_script( 'ohUnslider', "$themeDir/main.js", array( 'jquery' ) );
 	wp_enqueue_script(
 		'ohLightboxJs',
 		"$themeDir/js/lightbox2/js/lightbox.min.js",
