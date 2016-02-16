@@ -11,14 +11,24 @@ html body {
 	font-family: hk_grotesk, sans-serif;
 }
 
-.navbar {
-	border-radius: 0;
-	height:3.6em;
-}
-
 #container {
 	overflow:hidden;
 	padding-top:3em;
+}
+
+/* === Header === */
+
+.header {
+	padding:3em;
+}
+
+.header h2 img {
+	width:12em;
+}
+
+.navbar {
+	border-radius: 0;
+	height:3.6em;
 }
 
 /* === Home === */

@@ -7,8 +7,7 @@ $section = getTopLevelSection();
 <body <?php body_class(); ?>>
 	<div id="wrapper" class="hfeed">
 		<div class="header">
-			<h2>Ouachita Hills <?php echo $section ?></h2>
-			<?php get_search_form(); ?>
+			<h2><img src="<?php bloginfo('stylesheet_directory'); ?>/images/OHM-Logo-Responsive-Color-1-Medium.png" alt="Ouachita Hills Ministries" /></h2>
 		</div>
 		<nav class="navbar navbar-default"> <!-- navbar-fixed-top -->
 			<div class="container-fluid">
@@ -37,6 +36,7 @@ $section = getTopLevelSection();
 					<ul class="nav navbar-nav">
 						<?php echo getTopNavPageList(); ?>
 					</ul>
+					<?php get_search_form(); ?>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
