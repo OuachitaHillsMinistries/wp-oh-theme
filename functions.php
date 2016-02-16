@@ -16,7 +16,7 @@ function blankslate_setup() {
 		array( 'main-menu' => __( 'Main Menu', 'blankslate' ) )
 	);
 
-	add_image_size('medium-large',600,600);
+	add_image_size( 'medium-large', 600, 600 );
 }
 
 add_action( 'wp_enqueue_scripts', 'blankslate_load_scripts' );
@@ -25,7 +25,7 @@ function blankslate_load_scripts() {
 
 	wp_enqueue_style( 'ohUnsliderCss', "$themeDir/css/unslider.css" );
 	wp_enqueue_style( 'ohBootstrapCss', "$themeDir/css/bootstrap.min.css" );
-	wp_enqueue_style('ohLightboxCss',"$themeDir/js/lightbox2/css/lightbox.min.css");
+	wp_enqueue_style( 'ohLightboxCss', "$themeDir/js/lightbox2/css/lightbox.min.css" );
 	wp_enqueue_style( 'ohCss', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'ohBootstrap', "$themeDir/js/bootstrap.min.js", array( 'jquery' ) );
@@ -33,7 +33,7 @@ function blankslate_load_scripts() {
 	wp_enqueue_script(
 		'ohLightboxJs',
 		"$themeDir/js/lightbox2/js/lightbox.min.js",
-		array('jquery'),
+		array( 'jquery' ),
 		false,
 		true
 	);
@@ -97,13 +97,13 @@ add_editor_style( 'style.css' );
 /* === Image Galleries === */
 
 function ohImageGallery() {
-	if (is_callable('twp_the_post_images')) {
+	if ( is_callable( 'twp_the_post_images' ) ) {
 		$images = twp_the_post_images();
-		if ($images) {
+		if ( $images ) {
 			$galleryList = makeImageList( $images, 'page_gallery', 'thumbnail' );
-			$sliderList = makeImageList( $images, 'page_slider', 'medium-large' );
-			$gallery = "<div class='gallery'><ul>$galleryList</ul></div>";
-			$slider = "<div class='slider'><ul>$sliderList</ul></div>";
+			$sliderList  = makeImageList( $images, 'page_slider', 'medium-large' );
+			$gallery     = "<div class='gallery'><ul>$galleryList</ul></div>";
+			$slider      = "<div class='slider'><ul>$sliderList</ul></div>";
 			echo "<div class='images'>$gallery $slider</div>";
 		}
 	}
@@ -132,7 +132,10 @@ function subpageNav( $parentId ) {
 		'parent'   => $parentId
 	) );
 
-	if ( ! empty( $children ) ) {
+	$isChildren    = ! empty( $children );
+	$isSectionPage = isCollegeHome() || isAcademyHome();
+
+	if ( $isChildren && ! $isSectionPage ) {
 		$currentId = get_the_ID();
 		$items     = '';
 
@@ -147,9 +150,22 @@ function subpageNav( $parentId ) {
 	}
 }
 
+function isAcademyHome()
+{
+	$post = get_post();
+	return $post->post_title == "Academy";
+}
+
+function isCollegeHome()
+{
+	$post = get_post();
+	return $post->post_title == "College";
+}
+
 function getTopNavPageList() {
-	if (isAcademy() && !isCollege()) {
-		$academyId = getIdByTitle('Academy');
+	if ( isAcademy() && ! isCollege() ) {
+		$academyId = getIdByTitle( 'Academy' );
+
 		return wp_list_pages( array(
 			'child_of' => $academyId,
 			'depth'    => 3,
@@ -157,8 +173,9 @@ function getTopNavPageList() {
 			'walker'   => new wp_bootstrap_navwalker(),
 			'echo'     => false
 		) );
-	} else if (isCollege() && !isAcademy()) {
-		$collegeId = getIdByTitle('College');
+	} else if ( isCollege() && ! isAcademy() ) {
+		$collegeId = getIdByTitle( 'College' );
+
 		return wp_list_pages( array(
 			'child_of' => $collegeId,
 			'depth'    => 3,
@@ -177,9 +194,9 @@ function getTopNavPageList() {
 }
 
 function getTopLevelSection() {
-	if (isAcademy() && !isCollege()) {
+	if ( isAcademy() && ! isCollege() ) {
 		return 'Academy';
-	} else if (isCollege() && !isAcademy()) {
+	} else if ( isCollege() && ! isAcademy() ) {
 		return 'College';
 	} else {
 		return 'Ministries';
@@ -187,55 +204,59 @@ function getTopLevelSection() {
 }
 
 function isAcademy() {
-	if (is_category('College') || is_home() || is_search()) {
-		return False;
-	} else if (relatesToCategory('Academy')) {
-		return True;
+	if ( is_category( 'College' ) || is_home() || is_search() ) {
+		return false;
+	} else if ( relatesToCategory( 'Academy' ) ) {
+		return true;
 	} else {
-		return False;
+		return false;
 	}
 }
 
 function isCollege() {
-	if (is_category('Academy') || is_home() || is_search()) {
-		return False;
-	} else if (relatesToCategory('College')) {
-		return True;
+	if ( is_category( 'Academy' ) || is_home() || is_search() ) {
+		return false;
+	} else if ( relatesToCategory( 'College' ) ) {
+		return true;
 	} else {
-		return False;
+		return false;
 	}
 }
 
-function relatesToCategory($category) {
-	return topParent()->post_title == $category || in_category($category) || is_category($category);
+function relatesToCategory( $category ) {
+	return topParent()->post_title == $category || in_category( $category ) || is_category( $category );
 }
 
 function topParent() {
 	$parents = get_post_ancestors( postID() );
-	return get_post(end($parents));
+
+	return get_post( end( $parents ) );
 }
 
 function postID() {
-	$url = explode('?', 'http://'.$_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
-	$ID = url_to_postid($url[0]);
+	$url = explode( '?', 'http://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] );
+	$ID  = url_to_postid( $url[0] );
+
 	return $ID;
 }
 
 function getCollegeUrl() {
-	return getUrlByTitle('College');
+	return getUrlByTitle( 'College' );
 }
 
 function getAcademyUrl() {
-	return getUrlByTitle('Academy');
+	return getUrlByTitle( 'Academy' );
 }
 
-function getIdByTitle($title)  {
+function getIdByTitle( $title ) {
 	$page = get_page_by_title( $title );
+
 	return $page->ID;
 }
 
 function getUrlByTitle( $title ) {
-	$id = getIdByTitle($title);
+	$id = getIdByTitle( $title );
+
 	return get_permalink( $id );
 }
 
@@ -266,7 +287,7 @@ class bootstrap_pills_walker extends Walker_Page {
 			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
 				$css_class[] = 'current_page_parent';
 			}
-		} elseif ( $page->ID == get_option('page_for_posts') ) {
+		} elseif ( $page->ID == get_option( 'page_for_posts' ) ) {
 			$css_class[] = 'current_page_parent';
 		}
 
@@ -277,12 +298,12 @@ class bootstrap_pills_walker extends Walker_Page {
 		 *
 		 * @see wp_list_pages()
 		 *
-		 * @param array   $css_class    An array of CSS classes to be applied
+		 * @param array $css_class An array of CSS classes to be applied
 		 *                             to each list item.
-		 * @param WP_Post $page         Page data object.
-		 * @param int     $depth        Depth of page, used for padding.
-		 * @param array   $args         An array of arguments.
-		 * @param int     $current_page ID of the current page.
+		 * @param WP_Post $page Page data object.
+		 * @param int $depth Depth of page, used for padding.
+		 * @param array $args An array of arguments.
+		 * @param int $current_page ID of the current page.
 		 */
 		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
 
@@ -292,7 +313,7 @@ class bootstrap_pills_walker extends Walker_Page {
 		}
 
 		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
-		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
+		$args['link_after']  = empty( $args['link_after'] ) ? '' : $args['link_after'];
 
 		/** This filter is documented in wp-includes/post-template.php */
 		$output .= $indent . sprintf(
@@ -324,7 +345,7 @@ require_once( 'php-utils/wp_bootstrap_navwalker.php' );
 require_once( 'php-utils/class-tgm-plugin-activation.php' );
 add_action( 'tgmpa_register', 'ohThemeRegisterRequiredPlugins' );
 
-function  ohThemeRegisterRequiredPlugins() {
+function ohThemeRegisterRequiredPlugins() {
 	/*
 	 * Array of plugin arrays. Required keys are name and slug.
 	 * If the source is NOT from the .org repo, then source is also required.
@@ -332,67 +353,86 @@ function  ohThemeRegisterRequiredPlugins() {
 	$plugins = array(
 
 		array(
-			'name'      => 'Attach Post Images',
-			'slug'      => 'attach-post-images',
-			'required'  => true,
+			'name'     => 'Attach Post Images',
+			'slug'     => 'attach-post-images',
+			'required' => true,
 		),
 
 		array(
-			'name'      => 'Shortcodes Ultimate',
-			'slug'      => 'shortcodes-ultimate',
-			'required'  => false,
+			'name'     => 'Shortcodes Ultimate',
+			'slug'     => 'shortcodes-ultimate',
+			'required' => false,
 		),
 
 		array(
-			'name'      => 'Paste as Plain Text',
-			'slug'      => 'paste-as-plain-text',
-			'required'  => false,
+			'name'     => 'Paste as Plain Text',
+			'slug'     => 'paste-as-plain-text',
+			'required' => false,
 		),
 
 		array(
-			'name'      => 'Unobtrusive Admin Bar',
-			'slug'      => 'unobtrusive-admin-bar',
-			'required'  => false,
+			'name'     => 'Unobtrusive Admin Bar',
+			'slug'     => 'unobtrusive-admin-bar',
+			'required' => false,
 		),
 
-/*		array(
-			'name'      => 'WP Search Suggest',
-			'slug'      => 'wp-search-suggest',
-			'required'  => false,
-		),*/
+		/*		array(
+					'name'      => 'WP Search Suggest',
+					'slug'      => 'wp-search-suggest',
+					'required'  => false,
+				),*/
 
 
 		array(
-			'name'      => 'Advanced Responsive Video Embedder',
-			'slug'      => 'advanced-responsive-video-embedder',
-			'required'  => true,
+			'name'     => 'Advanced Responsive Video Embedder',
+			'slug'     => 'advanced-responsive-video-embedder',
+			'required' => true,
 		),
 
 		array(
-			'name'               => 'Gravity Forms', // The plugin name.
-			'slug'               => 'gravityforms', // The plugin slug (typically the folder name).
-			'source'             => get_stylesheet_directory() . '/bundled-plugins/gravityforms_1.9.16.3.zip', // The plugin source.
-			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
-			'version'            => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
-			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-			'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-			'external_url'       => '', // If set, overrides default API URL and points to an external URL.
-			'is_callable'        => '', // If set, this callable will be be checked for availability to determine if a plugin is active.
+			'name'               => 'Gravity Forms',
+			// The plugin name.
+			'slug'               => 'gravityforms',
+			// The plugin slug (typically the folder name).
+			'source'             => get_stylesheet_directory() . '/bundled-plugins/gravityforms_1.9.16.3.zip',
+			// The plugin source.
+			'required'           => true,
+			// If false, the plugin is only 'recommended' instead of required.
+			'version'            => '',
+			// E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
+			'force_activation'   => false,
+			// If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_deactivation' => false,
+			// If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+			'external_url'       => '',
+			// If set, overrides default API URL and points to an external URL.
+			'is_callable'        => '',
+			// If set, this callable will be be checked for availability to determine if a plugin is active.
 		),
 
 	);
 
 	$config = array(
-		'id'           => 'tgmpa',                 // Unique ID for hashing notices for multiple instances of TGMPA.
-		'default_path' => '',                      // Default absolute path to bundled plugins.
-		'menu'         => 'tgmpa-install-plugins', // Menu slug.
-		'parent_slug'  => 'themes.php',            // Parent menu slug.
-		'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
-		'has_notices'  => true,                    // Show admin notices or not.
-		'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
-		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
-		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
-		'message'      => '',                      // Message to output right before the plugins table.
+		'id'           => 'tgmpa',
+		// Unique ID for hashing notices for multiple instances of TGMPA.
+		'default_path' => '',
+		// Default absolute path to bundled plugins.
+		'menu'         => 'tgmpa-install-plugins',
+		// Menu slug.
+		'parent_slug'  => 'themes.php',
+		// Parent menu slug.
+		'capability'   => 'edit_theme_options',
+		// Capability needed to view plugin install page, should be a capability associated with the parent menu used.
+		'has_notices'  => true,
+		// Show admin notices or not.
+		'dismissable'  => true,
+		// If false, a user cannot dismiss the nag message.
+		'dismiss_msg'  => '',
+		// If 'dismissable' is false, this message will be output at top of nag.
+		'is_automatic' => false,
+		// Automatically activate plugins after installation or not.
+		'message'      => '',
+		// Message to output right before the plugins table.
 	);
 
 	tgmpa( $plugins, $config );
