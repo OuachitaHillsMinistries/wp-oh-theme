@@ -48,13 +48,16 @@ jQuery(document).ready(function($) {
     var stickyNavTop = navbar.offset().top;
 
     var stickyNav = function(){
+        var content = $('#container');
         var navbar = $('.navbar');
         var scrollTop = $(window).scrollTop();
 
         if (scrollTop > stickyNavTop) {
             navbar.addClass('navbar-fixed-top');
+            content.addClass('sticky-nav')
         } else {
             navbar.removeClass('navbar-fixed-top');
+            content.removeClass('sticky-nav');
         }
     };
 
