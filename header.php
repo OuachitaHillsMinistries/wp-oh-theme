@@ -6,7 +6,11 @@ $section = getTopLevelSection();
 
 <body <?php body_class(); ?>>
 	<div id="wrapper" class="hfeed">
-		<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="header">
+			<h2>Ouachita Hills <?php echo $section ?></h2>
+			<?php get_search_form(); ?>
+		</div>
+		<nav class="navbar navbar-default"> <!-- navbar-fixed-top -->
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -33,7 +37,6 @@ $section = getTopLevelSection();
 					<ul class="nav navbar-nav">
 						<?php echo getTopNavPageList(); ?>
 					</ul>
-					<?php get_search_form(); ?>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
