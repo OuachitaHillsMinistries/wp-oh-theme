@@ -17,7 +17,6 @@
 	</div>
 	<section class="entry-content">
 		<div class="text">
-			<?php recentPostsSlider(); ?>
 			<?php the_content(); ?>
 			<?php edit_post_link(); ?>
 		</div>
