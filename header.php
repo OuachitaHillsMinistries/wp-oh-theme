@@ -6,7 +6,15 @@ $section = getTopLevelSection();
 
 <body <?php body_class(); ?>>
 	<div id="wrapper" class="hfeed">
-		<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="header">
+			<h2><a href="<?php echo home_url() ?>">
+				<img
+					src="<?php bloginfo('stylesheet_directory'); ?>/images/OHM-Logo-Responsive-Color-1-Medium.png"
+					alt="Ouachita Hills Ministries"
+				/>
+			</a></h2>
+		</div>
+		<nav class="navbar navbar-default"> <!-- navbar-fixed-top -->
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -18,10 +26,10 @@ $section = getTopLevelSection();
 					</button>
 					<div class="dropdown navbar-brand">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							Ouachita Hills <?php echo $section ?> <span class="caret"></span>
+							<?php echo $section ?> <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="<?php home_url() ?>">Ministries</a></li>
+							<li><a href="<?php echo home_url() ?>">Ministries</a></li>
 							<li><a href="<?php echo getAcademyUrl() ?>">Academy</a></li>
 							<li><a href="<?php echo getCollegeUrl() ?>">College</a></li>
 						</ul>

@@ -11,25 +11,47 @@ html body {
 	font-family: hk_grotesk, sans-serif;
 }
 
+#container {
+	overflow:hidden;
+	width:100%;
+}
+
+/* === Header === */
+
+.header {
+	padding:1em;
+	background:transparent url('images/Mist_in_the_trees_-_Public_Domain.jpg') no-repeat scroll 50% 12%;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.header h2 {
+	margin:0;
+}
+
+.header h2 img {
+	width:7em;
+	background-color:rgba(255,255,255,.5);
+	padding:.5em;
+}
+
 .navbar {
 	border-radius: 0;
 	height:3.6em;
+	margin-bottom:0;
 }
 
-#container {
-	overflow:hidden;
-	padding-top:3em;
+.sticky-nav {
+	margin-top:3.6em;
 }
 
 /* === Home === */
 
 body.home {
 	text-align: center;
-	background-image: url('images/_A1P1213.JPG');
+	background:transparent url('images/Mist_in_the_trees_-_Public_Domain.jpg') no-repeat fixed 50% 50%;
+	-webkit-background-size: cover;
 	background-size: cover;
-	background-repeat:no-repeat;
-	background-position: 50% 50%;
-	background-attachment: fixed;
 }
 
 .home .wrapper {
