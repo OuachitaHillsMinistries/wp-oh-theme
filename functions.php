@@ -51,9 +51,9 @@ add_filter( 'the_title', 'blankslate_title' );
 function blankslate_title( $title ) {
 	if ( $title == '' ) {
 		return '&rarr;';
-	} else {
-		return $title;
 	}
+
+	return $title;
 }
 
 add_filter( 'wp_title', 'blankslate_filter_wp_title' );
@@ -87,9 +87,9 @@ function blankslate_comments_number( $count ) {
 		$comments_by_type = &separate_comments( get_comments( 'status=approve&post_id=' . $id ) );
 
 		return count( $comments_by_type['comment'] );
-	} else {
-		return $count;
 	}
+
+	return $count;
 }
 
 add_editor_style( 'style.css' );
@@ -183,14 +183,14 @@ function getTopNavPageList() {
 			'walker'   => new wp_bootstrap_navwalker(),
 			'echo'     => false
 		) );
-	} else {
-		return wp_list_pages( array(
-			'depth'    => 2,
-			'title_li' => null,
-			'walker'   => new wp_bootstrap_navwalker(),
-			'echo'     => false
-		) );
 	}
+
+	return wp_list_pages( array(
+		'depth'    => 2,
+		'title_li' => null,
+		'walker'   => new wp_bootstrap_navwalker(),
+		'echo'     => false
+	) );
 }
 
 function getTopLevelSection() {
@@ -198,29 +198,25 @@ function getTopLevelSection() {
 		return 'Academy';
 	} else if ( isCollege() && ! isAcademy() ) {
 		return 'College';
-	} else {
-		return 'Ministries';
 	}
+
+	return 'Ministries';
 }
 
 function isAcademy() {
-	if ( is_category( 'College' ) || is_home() || is_search() ) {
-		return false;
-	} else if ( relatesToCategory( 'Academy' ) ) {
-		return true;
-	} else {
+	if ( is_category( 'College' ) || is_home() || is_search() || ! relatesToCategory('Academy') ) {
 		return false;
 	}
+
+	return true;
 }
 
 function isCollege() {
-	if ( is_category( 'Academy' ) || is_home() || is_search() ) {
-		return false;
-	} else if ( relatesToCategory( 'College' ) ) {
-		return true;
-	} else {
+	if ( is_category( 'Academy' ) || is_home() || is_search() || ! relatesToCategory('College') ) {
 		return false;
 	}
+
+	return true;
 }
 
 function relatesToCategory( $category ) {
