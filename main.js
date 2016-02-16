@@ -31,12 +31,37 @@
 
 
 jQuery(document).ready(function($) {
+
+    /* === Home page news slider === */
+
     $('.news .slider').unslider({
         nav: false,
         autoplay: true,
         delay: 7000,
         animation: 'fade',
         animateHeight: true
+    });
+
+    /* === Sticky navigation === */
+
+    var navbar = $('.navbar');
+    var stickyNavTop = navbar.offset().top;
+
+    var stickyNav = function(){
+        var navbar = $('.navbar');
+        var scrollTop = $(window).scrollTop();
+
+        if (scrollTop > stickyNavTop) {
+            navbar.addClass('navbar-fixed-top');
+        } else {
+            navbar.removeClass('navbar-fixed-top');
+        }
+    };
+
+    stickyNav();
+
+    $(window).scroll(function() {
+        stickyNav();
     });
 
     /* === Page Gallery & Slider === */
