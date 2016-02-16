@@ -18,7 +18,7 @@ $section = getTopLevelSection();
 					</button>
 					<div class="dropdown navbar-brand">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							Ouachita Hills <?php echo $section ?> <span class="caret"></span>
+							<?php echo $section ?> <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="<?php home_url() ?>">Ministries</a></li>
