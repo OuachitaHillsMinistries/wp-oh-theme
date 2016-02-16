@@ -6,10 +6,10 @@ function blankslate_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'post-thumbnails' );
-	global $content_width;
+	global $contentWidth;
 
-	if ( ! isset( $content_width ) ) {
-		$content_width = 640;
+	if ( ! isset( $contentWidth ) ) {
+		$contentWidth = 640;
 	}
 
 	register_nav_menus(
@@ -51,9 +51,9 @@ add_filter( 'the_title', 'blankslate_title' );
 function blankslate_title( $title ) {
 	if ( $title == '' ) {
 		return '&rarr;';
-	} else {
-		return $title;
 	}
+
+	return $title;
 }
 
 add_filter( 'wp_title', 'blankslate_filter_wp_title' );
@@ -84,12 +84,12 @@ add_filter( 'get_comments_number', 'blankslate_comments_number' );
 function blankslate_comments_number( $count ) {
 	if ( ! is_admin() ) {
 		global $id;
-		$comments_by_type = &separate_comments( get_comments( 'status=approve&post_id=' . $id ) );
+		$commentsByType = &separate_comments( get_comments( 'status=approve&post_id=' . $id ) );
 
-		return count( $comments_by_type['comment'] );
-	} else {
-		return $count;
+		return count( $commentsByType['comment'] );
 	}
+
+	return $count;
 }
 
 add_editor_style( 'style.css' );
@@ -183,14 +183,14 @@ function getTopNavPageList() {
 			'walker'   => new wp_bootstrap_navwalker(),
 			'echo'     => false
 		) );
-	} else {
-		return wp_list_pages( array(
-			'depth'    => 2,
-			'title_li' => null,
-			'walker'   => new wp_bootstrap_navwalker(),
-			'echo'     => false
-		) );
 	}
+
+	return wp_list_pages( array(
+		'depth'    => 2,
+		'title_li' => null,
+		'walker'   => new wp_bootstrap_navwalker(),
+		'echo'     => false
+	) );
 }
 
 function getTopLevelSection() {
@@ -198,29 +198,25 @@ function getTopLevelSection() {
 		return 'Academy';
 	} else if ( isCollege() && ! isAcademy() ) {
 		return 'College';
-	} else {
-		return 'Ministries';
 	}
+
+	return 'Ministries';
 }
 
 function isAcademy() {
-	if ( is_category( 'College' ) || is_home() || is_search() ) {
-		return false;
-	} else if ( relatesToCategory( 'Academy' ) ) {
-		return true;
-	} else {
+	if ( is_category( 'College' ) || is_home() || is_search() || ! relatesToCategory('Academy') ) {
 		return false;
 	}
+
+	return true;
 }
 
 function isCollege() {
-	if ( is_category( 'Academy' ) || is_home() || is_search() ) {
-		return false;
-	} else if ( relatesToCategory( 'College' ) ) {
-		return true;
-	} else {
+	if ( is_category( 'Academy' ) || is_home() || is_search() || ! relatesToCategory('College') ) {
 		return false;
 	}
+
+	return true;
 }
 
 function relatesToCategory( $category ) {
@@ -228,16 +224,14 @@ function relatesToCategory( $category ) {
 }
 
 function topParent() {
-	$parents = get_post_ancestors( postID() );
+	$parents = get_post_ancestors( getPostId() );
 
 	return get_post( end( $parents ) );
 }
 
-function postID() {
-	$url = explode( '?', 'http://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] );
-	$ID  = url_to_postid( $url[0] );
-
-	return $ID;
+function getPostId() {
+	global $post;
+	return $post->ID;
 }
 
 function getCollegeUrl() {
@@ -255,40 +249,40 @@ function getIdByTitle( $title ) {
 }
 
 function getUrlByTitle( $title ) {
-	$id = getIdByTitle( $title );
+	$postId = getIdByTitle( $title );
 
-	return get_permalink( $id );
+	return get_permalink( $postId );
 }
 
 /* Bootstrap Pills Walker */
 
-class bootstrap_pills_walker extends Walker_Page {
-	public function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+class bootstrapPillsWalker extends Walker_Page {
+	public function start_el( &$output, $page, $depth = 0, $args = array(), $currentPage = 0 ) {
 		if ( $depth ) {
 			$indent = str_repeat( "\t", $depth );
 		} else {
 			$indent = '';
 		}
 
-		$css_class = array( 'page_item', 'page-item-' . $page->ID );
+		$cssClass = array( 'page_item', 'page-item-' . $page->ID );
 
 		if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
-			$css_class[] = 'page_item_has_children';
+			$cssClass[] = 'page_item_has_children';
 		}
 
-		if ( ! empty( $current_page ) ) {
-			$_current_page = get_post( $current_page );
-			if ( $_current_page && in_array( $page->ID, $_current_page->ancestors ) ) {
-				$css_class[] = 'current_page_ancestor';
+		if ( ! empty( $currentPage ) ) {
+			$_currentPage = get_post( $currentPage );
+			if ( $_currentPage && in_array( $page->ID, $_currentPage->ancestors ) ) {
+				$cssClass[] = 'current_page_ancestor';
 			}
-			if ( $page->ID == $current_page ) {
-				$css_class[] = 'current_page_item';
-				$css_class[] = 'active';
-			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
-				$css_class[] = 'current_page_parent';
+			if ( $page->ID == $currentPage ) {
+				$cssClass[] = 'current_page_item';
+				$cssClass[] = 'active';
+			} elseif ( $_currentPage && $page->ID == $_currentPage->post_parent ) {
+				$cssClass[] = 'current_page_parent';
 			}
 		} elseif ( $page->ID == get_option( 'page_for_posts' ) ) {
-			$css_class[] = 'current_page_parent';
+			$cssClass[] = 'current_page_parent';
 		}
 
 		/**
@@ -298,14 +292,14 @@ class bootstrap_pills_walker extends Walker_Page {
 		 *
 		 * @see wp_list_pages()
 		 *
-		 * @param array $css_class An array of CSS classes to be applied
+		 * @param array $cssClass An array of CSS classes to be applied
 		 *                             to each list item.
 		 * @param WP_Post $page Page data object.
 		 * @param int $depth Depth of page, used for padding.
 		 * @param array $args An array of arguments.
-		 * @param int $current_page ID of the current page.
+		 * @param int $currentPage ID of the current page.
 		 */
-		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+		$css_classes = implode( ' ', apply_filters( 'page_css_class', $cssClass, $page, $depth, $args, $currentPage ) );
 
 		if ( '' === $page->post_title ) {
 			/* translators: %d: ID of a post */
@@ -332,8 +326,8 @@ class bootstrap_pills_walker extends Walker_Page {
 				$time = $page->post_date;
 			}
 
-			$date_format = empty( $args['date_format'] ) ? '' : $args['date_format'];
-			$output .= " " . mysql2date( $date_format, $time );
+			$dateFormat = empty( $args['date_format'] ) ? '' : $args['date_format'];
+			$output .= " " . mysql2date( $dateFormat, $time );
 		}
 	}
 }
