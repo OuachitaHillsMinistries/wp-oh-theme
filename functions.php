@@ -228,16 +228,14 @@ function relatesToCategory( $category ) {
 }
 
 function topParent() {
-	$parents = get_post_ancestors( postID() );
+	$parents = get_post_ancestors( getPostId() );
 
 	return get_post( end( $parents ) );
 }
 
-function postID() {
-	$url = explode( '?', 'http://' . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] );
-	$ID  = url_to_postid( $url[0] );
-
-	return $ID;
+function getPostId() {
+	global $post;
+	return $post->ID;
 }
 
 function getCollegeUrl() {
