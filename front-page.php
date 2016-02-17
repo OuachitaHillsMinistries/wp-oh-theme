@@ -5,11 +5,9 @@
 
 		    <div class="start">
 		        <h1>Ouachita Hills Ministries</h1>
-
-		        <?php wp_page_menu(array(
-		            'depth' => 1,
-		            'show_home' => true
-		        )) ?>
+				<ul>
+					<?php echo getHomeNavPageList(); ?>
+				</ul>
 		    </div>
 
 		    <div class="news">

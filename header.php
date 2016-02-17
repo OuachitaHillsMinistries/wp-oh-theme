@@ -6,7 +6,7 @@ $section = getTopLevelSection();
 
 <body <?php body_class(); ?>>
 	<div id="wrapper" class="hfeed">
-		<div class="header">
+		<div class="top-header">
 			<h2><a href="<?php echo home_url() ?>">
 				<img
 					src="<?php bloginfo('stylesheet_directory'); ?>/images/OHM-Logo-Responsive-Color-1-Medium.png"
@@ -38,7 +38,7 @@ $section = getTopLevelSection();
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<?php echo getTopNavPageList(); ?>
+							<?php echo getNavPageList(); ?>
 						</ul>
 						<?php get_search_form(); ?>
 					</div><!-- /.navbar-collapse -->
