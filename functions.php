@@ -135,7 +135,8 @@ function newsTicker() {
 	foreach ($posts as $post) {
 		$items .= "<li>{$post->post_title}</li>";
 	}
-	echo '<div class="news"><div class="slider"><ul>' . $items . '</ul></div></div>';
+	$atts = (count($posts) > 1) ? 'class="slider"' : 'class="slider single"';
+	echo "<div class='news'><div $atts><ul>$items</ul></div></div>";
 }
 
 /* News Ticker Custom Post Type */

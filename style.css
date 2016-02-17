@@ -117,53 +117,32 @@ body.home {
 }
 
 .unslider-arrow, .unslider-arrow:hover {
-	color:transparent;
-	top:0;
-	font-size:0;
-	opacity:0;
+	top:.25em;
+	font-size:1.5em;
 	z-index:100;
-	transition: opacity 0.2s ease;
+	color:#337AB7;
+	opacity:0;
+	transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .unslider:hover .unslider-arrow {
 	opacity:1;
-
 }
 
-.unslider-arrow:after, .unslider-arrow:before {
-	content:"";
-	display:block;
-	transition: border-left 0.2s ease, border-right 0.2s ease;
-	width:0;
-	height:0;
+.unslider .unslider-arrow:hover {
+	color:#5AB51F;
+}
+
+.single ~ .unslider-arrow.next, .single ~ .unslider-arrow.prev {
+	display:none;
 }
 
 .unslider-arrow.next {
-	right:0;
-}
-
-.unslider-arrow.next:after {
-	border-top: 15px solid transparent;
-	border-bottom: 15px solid transparent;
-	border-left: 25px solid #337AB7;
-}
-
-.unslider-arrow.next:hover:after {
-	border-left: 25px solid #5AB51F;
+	right:.25em;
 }
 
 .unslider-arrow.prev {
-	left:0;
-}
-
-.unslider-arrow.prev:before {
-	border-top: 15px solid transparent;
-	border-bottom: 15px solid transparent;
-	border-right: 25px solid #337AB7;
-}
-
-.unslider-arrow.prev:hover:before {
-	border-right: 25px solid #5AB51F;
+	left:.25em;
 }
 
 /* === Pages === */
