@@ -163,34 +163,22 @@ function isCollegeHome()
 }
 
 function getTopNavPageList() {
+	$parentId = 0;
 	if ( isAcademy() && ! isCollege() ) {
-		$academyId = getIdByTitle( 'Academy' );
-
-		return wp_list_pages( array(
-			'child_of' => $academyId,
-			'depth'    => 3,
-			'title_li' => null,
-			'walker'   => new wp_bootstrap_navwalker(),
-			'echo'     => false
-		) );
+		$parentId = getIdByTitle( 'Academy' );
 	} else if ( isCollege() && ! isAcademy() ) {
-		$collegeId = getIdByTitle( 'College' );
-
-		return wp_list_pages( array(
-			'child_of' => $collegeId,
-			'depth'    => 3,
-			'title_li' => null,
-			'walker'   => new wp_bootstrap_navwalker(),
-			'echo'     => false
-		) );
+		$parentId = getIdByTitle( 'College' );
 	}
 
-	return wp_list_pages( array(
-		'depth'    => 2,
+	$pages = wp_list_pages( array(
+		'child_of' => $parentId,
+		'depth'    => 3,
 		'title_li' => null,
 		'walker'   => new wp_bootstrap_navwalker(),
 		'echo'     => false
 	) );
+
+	return $pages;
 }
 
 function getTopLevelSection() {
