@@ -18,7 +18,7 @@ html body {
 
 /* === Header === */
 
-.header {
+.top-header {
 	padding:1em;
 	background:transparent url('images/Mist_in_the_trees_-_Public_Domain.jpg') no-repeat scroll 50% 12%;
 	-webkit-background-size: cover;
@@ -27,11 +27,11 @@ html body {
 	padding-bottom:4.6em;
 }
 
-.header h2 {
+.top-header h2 {
 	margin:0;
 }
 
-.header h2 img {
+.top-header h2 img {
 	width:7em;
 	background-color:rgba(255,255,255,.5);
 	padding:.5em;

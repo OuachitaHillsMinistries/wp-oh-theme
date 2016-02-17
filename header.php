@@ -6,7 +6,7 @@ $section = getTopLevelSection();
 
 <body <?php body_class(); ?>>
 	<div id="wrapper" class="hfeed">
-		<div class="header">
+		<div class="top-header">
 			<h2><a href="<?php echo home_url() ?>">
 				<img
 					src="<?php bloginfo('stylesheet_directory'); ?>/images/OHM-Logo-Responsive-Color-1-Medium.png"
