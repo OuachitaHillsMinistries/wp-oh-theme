@@ -54,16 +54,14 @@ jQuery(document).ready(function($) {
 
         if (scrollTop > stickyNavTop) {
             navbar.addClass('navbar-fixed-top');
-            content.addClass('sticky-nav')
         } else {
             navbar.removeClass('navbar-fixed-top');
-            content.removeClass('sticky-nav');
         }
     };
 
     stickyNav();
 
-    $(window).scroll(function() {
+    $(window).on('scroll mousewheel', function() {
         stickyNav();
     });
 
