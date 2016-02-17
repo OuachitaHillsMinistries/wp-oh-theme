@@ -226,21 +226,30 @@ function isCollegeHome() {
 	return $post->post_title == "College";
 }
 
-function getTopNavPageList() {
+function getNavPageList() {
 	$parentId = ( isAcademy() && ! isCollege() ) ? getIdByTitle( 'Academy' ) : 0;
 	$parentId = ( isCollege() && ! isAcademy() ) ? getIdByTitle( 'College' ) : $parentId;
+	$depth = ($parentId == 0) ? 2 : 3;
 
 	$pagesHtml = wp_list_pages( array(
 		'child_of' => $parentId,
-		'depth'    => 3,
+		'depth'    => $depth,
 		'title_li' => null,
 		'walker'   => new wp_bootstrap_navwalker(),
 		'echo'     => false
 	) );
 
-	$globalPagesHtml = getGlobalPagesHtml();
+	return ( $parentId === 0 ) ? $pagesHtml : $pagesHtml . getGlobalPagesHtml();
+}
 
-	return ( $parentId === 0 ) ? $pagesHtml : $pagesHtml . $globalPagesHtml;
+function getHomeNavPageList() {
+	$pagesHtml = wp_list_pages( array(
+		'depth'    => 1,
+		'title_li' => null,
+		'echo'     => false
+	) );
+
+	return $pagesHtml . getGlobalPagesHtml();
 }
 
 function getGlobalPagesHtml() {
