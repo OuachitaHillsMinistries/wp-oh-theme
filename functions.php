@@ -155,29 +155,39 @@ function registerGlobalPagePostType() {
 		'items_list_navigation' => 'Items list navigation',
 		'filter_items_list'     => 'Filter items list',
 	);
-	$args = array(
-		'label'                 => 'Global Page',
-		'description'           => 'Pages always displayed in the nav bar.',
-		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes', ),
-		'taxonomies'            => array( 'category', 'post_tag' ),
-		'hierarchical'          => true,
-		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'menu_position'         => 20,
-		'menu_icon'             => 'dashicons-admin-page',
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
-		'can_export'            => true,
-		'has_archive'           => true,
-		'exclude_from_search'   => false,
-		'publicly_queryable'    => true,
-		'capability_type'       => 'page',
+	$args   = array(
+		'label'               => 'Global Page',
+		'description'         => 'Pages always displayed in the nav bar.',
+		'labels'              => $labels,
+		'supports'            => array(
+			'title',
+			'editor',
+			'author',
+			'thumbnail',
+			'comments',
+			'revisions',
+			'custom-fields',
+			'page-attributes',
+		),
+		'taxonomies'          => array( 'category', 'post_tag' ),
+		'hierarchical'        => true,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 20,
+		'menu_icon'           => 'dashicons-admin-page',
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'can_export'          => true,
+		'has_archive'         => true,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
 	);
 	register_post_type( 'ohGlobalPage', $args );
 
 }
+
 add_action( 'init', 'registerGlobalPagePostType', 0 );
 
 function subpageNav( $parentId ) {
@@ -204,21 +214,21 @@ function subpageNav( $parentId ) {
 	}
 }
 
-function isAcademyHome()
-{
+function isAcademyHome() {
 	$post = get_post();
+
 	return $post->post_title == "Academy";
 }
 
-function isCollegeHome()
-{
+function isCollegeHome() {
 	$post = get_post();
+
 	return $post->post_title == "College";
 }
 
 function getTopNavPageList() {
-	$parentId = (isAcademy() && ! isCollege()) ? getIdByTitle( 'Academy' ) : 0;
-	$parentId = (isCollege() && ! isAcademy()) ? getIdByTitle( 'College' ) : $parentId;
+	$parentId = ( isAcademy() && ! isCollege() ) ? getIdByTitle( 'Academy' ) : 0;
+	$parentId = ( isCollege() && ! isAcademy() ) ? getIdByTitle( 'College' ) : $parentId;
 
 	$pagesHtml = wp_list_pages( array(
 		'child_of' => $parentId,
@@ -230,33 +240,17 @@ function getTopNavPageList() {
 
 	$globalPagesHtml = getGlobalPagesHtml();
 
-	return ($parentId === 0) ? $pagesHtml : $pagesHtml . $globalPagesHtml;
+	return ( $parentId === 0 ) ? $pagesHtml : $pagesHtml . $globalPagesHtml;
 }
 
 function getGlobalPagesHtml() {
-	$academyId = getIdByTitle( 'Academy' );
-	$collegeId = getIdByTitle( 'College' );
-
-	$globalPages = get_pages( array(
-		'sort_column' => 'menu_order',
-		'exclude'     => array( $academyId, $collegeId ),
+	return wp_list_pages( array(
+		'depth'     => 2,
+		'title_li'  => null,
+		'walker'    => new wp_bootstrap_navwalker(),
+		'echo'      => false,
+		'post_type' => 'ohglobalpage'
 	) );
-
-	$globalPageIds = array();
-
-	foreach ( $globalPages as $page ) {
-		$globalPageIds[] = $page->ID;
-	}
-
-	$globalPagesHtml = wp_list_pages( array(
-		'depth'    => 3,
-		'title_li' => null,
-		'walker'   => new wp_bootstrap_navwalker(),
-		'echo'     => false,
-		'include'  => $globalPageIds
-	) );
-
-	return $globalPagesHtml;
 }
 
 function getTopLevelSection() {
@@ -270,7 +264,7 @@ function getTopLevelSection() {
 }
 
 function isAcademy() {
-	if ( is_category( 'College' ) || is_home() || is_search() || ! relatesToCategory('Academy') ) {
+	if ( is_category( 'College' ) || is_home() || is_search() || ! relatesToCategory( 'Academy' ) ) {
 		return false;
 	}
 
@@ -278,7 +272,7 @@ function isAcademy() {
 }
 
 function isCollege() {
-	if ( is_category( 'Academy' ) || is_home() || is_search() || ! relatesToCategory('College') ) {
+	if ( is_category( 'Academy' ) || is_home() || is_search() || ! relatesToCategory( 'College' ) ) {
 		return false;
 	}
 
@@ -297,6 +291,7 @@ function topParent() {
 
 function getPostId() {
 	global $post;
+
 	return $post->ID;
 }
 
