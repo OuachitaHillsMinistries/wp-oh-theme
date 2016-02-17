@@ -203,6 +203,10 @@ body.home {
 	width:100%;
 }
 
+.page-template-template-full-width .entry-content .text {
+	max-width:none;
+}
+
 .entry-content .text>*:first-child {
 	margin-top:0;
 	padding-top:0;
