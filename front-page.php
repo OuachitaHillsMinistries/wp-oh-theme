@@ -10,15 +10,7 @@
 				</ul>
 		    </div>
 
-		    <div class="news">
-		        <div class="slider">
-		            <ul>
-		                <li>Please donate for our new duck hatchery. <a href="#">Click here.</a></li>
-		                <li>Administration Building turns 7!</li>
-		                <li>Students currently canvassing. Keep them in prayer!</li>
-		            </ul>
-		        </div>
-		    </div>
+		    <?php newsTicker(); ?>
 
 		</div>
 

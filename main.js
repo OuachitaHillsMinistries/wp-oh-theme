@@ -39,7 +39,12 @@ jQuery(document).ready(function($) {
         autoplay: true,
         delay: 7000,
         animation: 'fade',
-        animateHeight: true
+        animateHeight: true,
+        arrows: {
+            //  Unslider default behaviour
+            prev: '<a class="unslider-arrow prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>',
+            next: '<a class="unslider-arrow next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>'
+        }
     });
 
     /* === Sticky navigation === */
