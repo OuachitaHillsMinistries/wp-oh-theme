@@ -47,7 +47,11 @@ function ohEnqueueAdminScripts() {
 	wp_enqueue_style( 'oh-jquery-ui', "$themeDir/includes/jquery-ui-1.11.4.custom/jquery-ui.min.css" );
 	wp_enqueue_style( 'ohAdmin', "$themeDir/admin.css" );
 
-	wp_enqueue_script( 'oh-jquery-ui', "$themeDir/includes/jquery-ui-1.11.4.custom/jquery-ui.min.js", array( 'jquery' ) );
+	wp_enqueue_script(
+		'oh-jquery-ui',
+		"$themeDir/includes/jquery-ui-1.11.4.custom/jquery-ui.min.js",
+		array( 'jquery' )
+	);
 	wp_enqueue_script( 'ohAdmin', "$themeDir/admin.js", array( 'jquery', 'oh-jquery-ui' ) );
 }
 

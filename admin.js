@@ -10,16 +10,24 @@ jQuery(document).ready(function ($) {
         featuredImage.frame().on('select', function () {
             var attachment_id = featuredImage.get();
             var attachment = featuredImage.frame().state().get('selection').first().toJSON();
-            var attachment_url = attachment.url;
-            console.log(attachment_id);
-            console.log(attachment_url);
-            var link = $('<img class="featuredImage" src="'+attachment_url+'" />');
-            var dialog_width = ($(window).width()) * .8;
-            var dialog_height = ($(window).height()) * .8;
-            $(link).dialog({
-                width: dialog_width,
-                height: dialog_height
-            });
+            console.log(attachment);
+            var attachment_url = attachment.sizes.large.url;
+            var attachment_width = attachment.sizes.large.width;
+            var attachment_height = attachment.sizes.large.height;
+            makeImageDialog(attachment_url, attachment_width, attachment_height);
         });
+
+        function makeImageDialog(attachment_url, attachment_width, attachment_height) {
+            var dialog = $(
+                '<div class="featuredCropper">' +
+                '<div id="featuredWrapper"><img src="'+attachment_url+'" /><div class="drag"></div></div>' +
+                '</div>'
+            );
+            $('body').append(dialog);
+            var drag_height = (2*attachment_width) / 19;
+            var $drag = $('.drag');
+            $drag.css({'height':drag_height});
+            $drag.draggable({ containment: "#featuredWrapper", axis: "y" })
+        }
     }
 });
