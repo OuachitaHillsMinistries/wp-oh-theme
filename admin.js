@@ -12,13 +12,8 @@ jQuery(document).ready(function ($) {
             console.log(attachment);
             var attachment_url = attachment.sizes.large.url;
             var attachment_width = attachment.sizes.large.width;
-            var attachment_height = attachment.sizes.large.height;
             makeImageDialog(attachment_url, attachment_width);
         });
-
-        function getAttachment() {
-            return imageSelector.state().get('selection').first().toJSON();
-        }
 
         function makeImageDialog(attachment_url, attachment_width) {
             var cropper =
@@ -43,7 +38,13 @@ jQuery(document).ready(function ($) {
 
         function featuredImageCropSave() {
             console.log('Saving!');
+            var attachment = getAttachment();
+            var attachment_height = attachment.sizes.large.height;
             closeCropper();
+        }
+
+        function getAttachment() {
+            return imageSelector.state().get('selection').first().toJSON();
         }
 
         function featuredImageCropCancel() {
