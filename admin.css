@@ -1,0 +1,13 @@
+.featuredImage {
+	max-width:100% !important;
+	max-height:100% !important;
+	display:block !important;
+	height:auto !important;
+}
+
+.ui-dialog {
+	z-index: 10000;
+	-webkit-box-shadow: 0 0 10px 0 rgba(50, 50, 50, 0.45);
+	-moz-box-shadow:    0 0 10px 0 rgba(50, 50, 50, 0.45);
+	box-shadow:         0 0 10px 0 rgba(50, 50, 50, 0.45);
+}
