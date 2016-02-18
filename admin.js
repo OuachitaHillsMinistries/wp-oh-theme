@@ -30,4 +30,24 @@ jQuery(document).ready(function ($) {
             $drag.draggable({ containment: "#featuredWrapper", axis: "y" })
         }
     }
+
+    $(document).keyup(function(e) {
+        if (e.keyCode == 13) { featuredImageCropSave(); } // enter
+        if (e.keyCode == 27) { featuredImageCropCancel(); } // esc
+    });
+
+    function featuredImageCropSave() {
+        console.log('Saving!');
+        closeCropper();
+    }
+
+    function featuredImageCropCancel() {
+        console.log('Canceling!');
+        closeCropper();
+    }
+
+    function closeCropper() {
+        $('.featuredCropper').remove();
+    }
 });
+
