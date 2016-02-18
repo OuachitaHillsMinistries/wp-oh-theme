@@ -19,25 +19,36 @@ function blankslate_setup() {
 	add_image_size( 'medium-large', 600, 600 );
 }
 
-add_action( 'wp_enqueue_scripts', 'blankslate_load_scripts' );
-function blankslate_load_scripts() {
+add_action( 'wp_enqueue_scripts', 'ohEnqueueFrontEndScripts' );
+function ohEnqueueFrontEndScripts() {
 	$themeDir = esc_url( get_template_directory_uri() );
 
-	wp_enqueue_style( 'ohUnsliderCss', "$themeDir/css/unslider.css" );
-	wp_enqueue_style( 'ohBootstrapCss', "$themeDir/css/bootstrap.min.css" );
-	wp_enqueue_style( 'ohLightboxCss', "$themeDir/js/lightbox2/css/lightbox.min.css" );
+	wp_enqueue_style( 'unslider', "$themeDir/css/unslider.css" );
+	wp_enqueue_style( 'bootstrap', "$themeDir/css/bootstrap.min.css" );
+	wp_enqueue_style( 'lightbox2', "$themeDir/js/lightbox2/css/lightbox.min.css" );
 	wp_enqueue_style( 'ohCss', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'ohBootstrap', "$themeDir/js/bootstrap.min.js", array( 'jquery' ) );
-	wp_enqueue_script( 'ohUnslider', "$themeDir/main.js", array( 'jquery' ) );
+	wp_enqueue_script( 'bootstrap', "$themeDir/js/bootstrap.min.js", array( 'jquery' ) );
+	wp_enqueue_script( 'unslider', "$themeDir/main.js", array( 'jquery' ) );
 	wp_enqueue_script(
-		'ohLightboxJs',
+		'lightbox2',
 		"$themeDir/js/lightbox2/js/lightbox.min.js",
 		array( 'jquery' ),
 		false,
 		true
 	);
 	wp_enqueue_script( 'ohMain', "$themeDir/unslider/src/js/unslider.js", array( 'jquery', 'ohUnslider' ) );
+}
+
+add_action( 'admin_enqueue_scripts', 'ohEnqueueAdminScripts' );
+function ohEnqueueAdminScripts() {
+	$themeDir = esc_url( get_template_directory_uri() );
+
+	wp_enqueue_style( 'oh-jquery-ui', "$themeDir/includes/jquery-ui-1.11.4.custom/jquery-ui.min.css" );
+	wp_enqueue_style( 'ohAdmin', "$themeDir/admin.css" );
+
+	wp_enqueue_script( 'oh-jquery-ui', "$themeDir/includes/jquery-ui-1.11.4.custom/jquery-ui.min.js", array( 'jquery' ) );
+	wp_enqueue_script( 'ohAdmin', "$themeDir/admin.js", array( 'jquery', 'oh-jquery-ui' ) );
 }
 
 add_action( 'comment_form_before', 'blankslate_enqueue_comment_reply_script' );
