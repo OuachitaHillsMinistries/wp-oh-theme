@@ -16,10 +16,10 @@ jQuery(document).ready(function ($) {
         });
 
         $(document).keyup(function (e) {
-            if (e.keyCode == 13) {
+            if (e.keyCode === 13) {
                 featuredImageCropSave();
             } // enter
-            if (e.keyCode == 27) {
+            if (e.keyCode === 27) {
                 featuredImageCropCancel();
             } // esc
         });
