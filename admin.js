@@ -15,32 +15,6 @@ jQuery(document).ready(function ($) {
             makeCropper(attachment_url, attachment_width);
         });
 
-        function makeCropper(attachment_url, attachment_width) {
-            var cropper =
-                '<div class="featuredCropper">' +
-                '<div id="featuredWrapper"><img src="' + attachment_url + '" /><div class="drag"></div></div>' +
-                '</div>';
-            $('body').append(cropper);
-            initDrag(attachment_url,attachment_width);
-        }
-
-        function initDrag(attachment_url, attachment_width) {
-            var drag_height = (2 * attachment_width) / 19;
-            var drag_window = $('.drag');
-            drag_window.css({
-                'height': drag_height,
-                'background-image': 'url('+attachment_url+')'
-            });
-            drag_window.draggable({
-                containment: "#featuredWrapper",
-                axis: "y",
-                drag: function() {
-                    var y1 = drag_window.position().top;
-                    var y2 = y1 + drag_height;
-                }
-            })
-        }
-
         $(document).keyup(function (e) {
             if (e.keyCode == 13) {
                 featuredImageCropSave();
@@ -50,25 +24,53 @@ jQuery(document).ready(function ($) {
             } // esc
         });
 
-        function featuredImageCropSave() {
-            console.log('Saving!');
-            var attachment = getAttachment();
-            var attachment_height = attachment.sizes.large.height;
-            closeCropper();
-        }
 
-        function getAttachment() {
-            return imageSelector.state().get('selection').first().toJSON();
-        }
+    }
 
-        function featuredImageCropCancel() {
-            console.log('Canceling!');
-            closeCropper();
-        }
+    function makeCropper(attachment_url, attachment_width) {
+        var cropper =
+            '<div class="featuredCropper">' +
+            '<div id="featuredWrapper"><img src="' + attachment_url + '" /><div class="drag"></div></div>' +
+            '</div>';
+        $('body').append(cropper);
+        initDrag(attachment_url,attachment_width);
+    }
 
-        function closeCropper() {
-            $('.featuredCropper').remove();
-        }
+    function initDrag(attachment_url, attachment_width) {
+        var drag_height = (2 * attachment_width) / 19;
+        var drag_window = $('.drag');
+        drag_window.css({
+            'height': drag_height,
+            'background-image': 'url('+attachment_url+')'
+        });
+        drag_window.draggable({
+            containment: "#featuredWrapper",
+            axis: "y",
+            drag: function() {
+                var y1 = drag_window.position().top;
+                var y2 = y1 + drag_height;
+            }
+        })
+    }
+
+    function featuredImageCropSave() {
+        console.log('Saving!');
+        var attachment = getAttachment();
+        var attachment_height = attachment.sizes.large.height;
+        closeCropper();
+    }
+
+    function getAttachment() {
+        return imageSelector.state().get('selection').first().toJSON();
+    }
+
+    function featuredImageCropCancel() {
+        console.log('Canceling!');
+        closeCropper();
+    }
+
+    function closeCropper() {
+        $('.featuredCropper').remove();
     }
 });
 
