@@ -12,7 +12,7 @@
 }
 
 #featuredWrapper {
-	margin: 10vh auto;
+	margin: 10vh auto 0 auto;
 	position: relative;
 }
 
@@ -32,4 +32,15 @@
 	width: 100%;
 	position: absolute;
 	top: 0;
+}
+
+.cropperControls {
+	background-color:white;
+	margin:5vh auto;
+	padding:10px;
+	box-sizing: border-box;
+}
+
+.cropperControls p {
+	margin-top:0;
 }
