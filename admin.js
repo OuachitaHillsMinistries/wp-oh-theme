@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    var attachment;
+    var image;
 
     if (typeof wp.media !== 'undefined') {
         console.log("I'm here!");
@@ -10,10 +10,8 @@ jQuery(document).ready(function ($) {
         var imageSelector = wp.media.featuredImage.frame();
 
         imageSelector.on('select', function () {
-            attachment = imageSelector.state().get('selection').first().toJSON();
-            var attachment_url = attachment.sizes.mediumLarge.url;
-            var attachment_width = attachment.sizes.mediumLarge.width;
-            makeCropper(attachment_url, attachment_width);
+            image = imageSelector.state().get('selection').first().toJSON().sizes.mediumLarge;
+            makeCropper();
         });
 
         $(document).keyup(function (e) {
@@ -28,21 +26,23 @@ jQuery(document).ready(function ($) {
 
     }
 
-    function makeCropper(attachment_url, attachment_width) {
+    function makeCropper() {
         var cropper =
             '<div class="featuredCropper">' +
-            '<div id="featuredWrapper"><img src="' + attachment_url + '" /><div class="drag"></div></div>' +
+            '<div id="featuredWrapper"><img src="' + image.url + '" /><div class="drag"></div></div>' +
             '</div>';
         $('body').append(cropper);
-        initDrag(attachment_url,attachment_width);
+        $('#featuredWrapper').css('width',image.width);
+        $('#featuredWrapper').css('height',image.height);
+        initDrag(image.url,image.width);
     }
 
-    function initDrag(attachment_url, attachment_width) {
-        var drag_height = (2 * attachment_width) / 19;
+    function initDrag() {
+        var drag_height = (2 * image.width) / 19;
         var drag_window = $('.drag');
         drag_window.css({
             'height': drag_height,
-            'background-image': 'url('+attachment_url+')'
+            'background-image': 'url('+image.url+')'
         });
         drag_window.draggable({
             containment: "#featuredWrapper",
@@ -52,15 +52,18 @@ jQuery(document).ready(function ($) {
                 var y2 = y1 + drag_height;
 
                 console.log(y1 + ', ' + y2 + ', ' + calculatePercent(y1,y2));
-                console.log(attachment.sizes.mediumLarge.height);
-                console.log(attachment)
+                console.log(image.height);
+                console.log(image)
             }
         })
     }
 
     function calculatePercent(y1,y2) {
-        var height = attachment.sizes.mediumLarge.height;
+        var height = image.height;
         var decimal = y1 / (height - (y2 - y1));
+
+        if (decimal > 1)
+            decimal = 1;
 
         return decimal * 100;
     }
