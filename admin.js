@@ -2,10 +2,6 @@ jQuery(document).ready(function ($) {
     var image;
 
     if (typeof wp.media !== 'undefined') {
-        $('#publish').click(function () {
-            alert("Publishing!");
-        });
-
         var imageSelector = wp.media.featuredImage.frame();
 
         imageSelector.on('select', function () {
