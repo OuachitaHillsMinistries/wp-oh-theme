@@ -22,8 +22,6 @@ jQuery(document).ready(function ($) {
                 featuredImageCropCancel();
             } // esc
         });
-
-
     }
 
     function makeCropper() {
@@ -31,34 +29,41 @@ jQuery(document).ready(function ($) {
             '<div class="featuredCropper">' +
             '<div id="featuredWrapper"><img src="' + image.url + '" /><div class="drag"></div></div>' +
             '</div>';
+
         $('body').append(cropper);
-        $('#featuredWrapper').css('width',image.width);
-        $('#featuredWrapper').css('height',image.height);
-        initDrag(image.url,image.width);
+
+        resizeFeaturedWrapper();
+        initDragWindow();
     }
 
-    function initDrag() {
+    function resizeFeaturedWrapper() {
+        var featuredWrapper = $('#featuredWrapper');
+        featuredWrapper.css('width', image.width);
+        featuredWrapper.css('height', image.height);
+    }
+
+    function initDragWindow() {
         var drag_height = (2 * image.width) / 19;
         var drag_window = $('.drag');
         drag_window.css({
             'height': drag_height,
-            'background-image': 'url('+image.url+')'
+            'background-image': 'url(' + image.url + ')'
         });
         drag_window.draggable({
             containment: "#featuredWrapper",
             axis: "y",
-            drag: function() {
+            drag: function () {
                 var y1 = drag_window.position().top;
                 var y2 = y1 + drag_height;
 
-                console.log(y1 + ', ' + y2 + ', ' + calculatePercent(y1,y2));
+                console.log(y1 + ', ' + y2 + ', ' + calculatePercent(y1, y2));
                 console.log(image.height);
                 console.log(image)
             }
         })
     }
 
-    function calculatePercent(y1,y2) {
+    function calculatePercent(y1, y2) {
         var height = image.height;
         var decimal = y1 / (height - (y2 - y1));
 
