@@ -63,7 +63,7 @@ function ohEnqueueFrontEndScripts() {
 		true
 	);
 
-	wp_enqueue_script( 'ohMain', "$themeDir/main.js", array( 'jquery', 'ohUnslider' ) );
+	wp_enqueue_script( 'ohMain', "$themeDir/main.js", array( 'jquery', 'unslider' ) );
 }
 
 add_action( 'admin_enqueue_scripts', 'ohEnqueueAdminScripts' );
