@@ -2,7 +2,6 @@ jQuery(document).ready(function ($) {
     var image;
 
     if (typeof wp.media !== 'undefined') {
-        console.log("I'm here!");
         $('#publish').click(function () {
             alert("Publishing!");
         });
@@ -30,7 +29,8 @@ jQuery(document).ready(function ($) {
             '<div id="featuredWrapper"><img src="' + image.url + '" /><div class="drag"></div></div>' +
             '<div class="cropperControls">' +
             '<p>Please drag the highlighted region up and down to select the primary portion of this image.</p>' +
-            '<a href="#" class="button button-large">Cancel</a> <a href="#" class="button button-primary button-large">Save</a>' +
+            '<a href="#" id="cropperCancel" class="button button-large">Cancel</a> ' +
+            '<a href="#" id="cropperSave" class="button button-primary button-large">Save</a>' +
             '</div>' +
             '</div>';
 
@@ -38,7 +38,12 @@ jQuery(document).ready(function ($) {
 
         resizeCropperElements();
         initDragWindow();
+        initCropperControls();
+    }
 
+    function initCropperControls() {
+        $('#cropperCancel').click(featuredImageCropCancel);
+        $('#cropperSave').click(featuredImageCropSave);
     }
 
     function resizeCropperElements() {
@@ -49,26 +54,24 @@ jQuery(document).ready(function ($) {
     }
 
     function initDragWindow() {
-        var drag_height = (2 * image.width) / 15;
         var drag_window = $('.drag');
         drag_window.css({
-            'height': drag_height,
+            'height': (2 * image.width) / 15,
             'background-image': 'url(' + image.url + ')'
         });
         drag_window.draggable({
             containment: "#featuredWrapper",
             axis: "y",
             drag: function () {
-                var y1 = drag_window.position().top;
-                var y2 = y1 + drag_height;
-                drag_window.css('background-position','0 ' + calculatePercent(y1,y2) + '%');
+                drag_window.css('background-position','0 ' + calculatePercent() + '%');
             }
         })
     }
 
-    function calculatePercent(y1, y2) {
-        var height = image.height;
-        var decimal = y1 / (height - (y2 - y1));
+    function calculatePercent() {
+        var y1 = $('.drag').position().top;
+        var y2 = y1 + (2 * image.width) / 15;
+        var decimal = y1 / (image.height - (y2 - y1));
 
         if (decimal > 1)
             decimal = 1;
@@ -78,6 +81,31 @@ jQuery(document).ready(function ($) {
 
     function featuredImageCropSave() {
         console.log('Saving!');
+
+        var $_GET = {};
+
+        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+            function decode(s) {
+                return decodeURIComponent(s.split("+").join(" "));
+            }
+
+            $_GET[decode(arguments[1])] = decode(arguments[2]);
+        });
+
+        var data = {
+            'action': 'save_featured_image_position',
+            'percent': calculatePercent(),
+            'post': $_GET['post']
+        };
+
+        // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+        jQuery.post(ajaxurl, data, function(response) {
+            console.log(response);
+            if (response === 'error') {
+                alert("Oops! We had a problem saving this image's position. Sorry about that.");
+            }
+        });
+
         closeCropper();
     }
 

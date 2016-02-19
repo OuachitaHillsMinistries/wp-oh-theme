@@ -80,6 +80,14 @@ function ohEnqueueAdminScripts() {
 	wp_enqueue_script( 'ohAdmin', "$themeDir/admin.js", array( 'jquery', 'oh-jquery-ui' ) );
 }
 
+add_action( 'wp_ajax_save_featured_image_position', 'ohSaveFeaturedImagePosition' );
+
+function ohSaveFeaturedImagePosition() {
+	$result = add_post_meta($_POST['post'],'ohHeroPosition',$_POST['percent']);
+	echo (is_wp_error($result)) ? 'error' : 'success';
+	wp_die(); // this is required to terminate immediately and return a proper response
+}
+
 add_action( 'comment_form_before', 'blankslate_enqueue_comment_reply_script' );
 function blankslate_enqueue_comment_reply_script() {
 	if ( get_option( 'thread_comments' ) ) {
