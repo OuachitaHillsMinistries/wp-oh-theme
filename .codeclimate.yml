@@ -33,3 +33,4 @@ exclude_paths:
 - unslider/**/*
 - css/**/*
 - js/**/*
+- includes/**/*
