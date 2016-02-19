@@ -49,7 +49,22 @@ html body {
 
 /* === Nav Bar === */
 
+.navbar > .container-fluid .navbar-brand {
+	background:#23527c;
+	margin:-1px 0 0 -16px;
+}
 
+.navbar.navbar-fixed-top .navbar-brand {
+	margin-top:0;
+}
+
+.navbar-brand a {
+	color:white;
+}
+
+.navbar-brand a:hover, .navbar-brand a:focus {
+	text-decoration: none;
+}
 
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > li > a:hover,
