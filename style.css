@@ -68,7 +68,6 @@ html body {
 	transition: width .55s ease;
 }
 
-.top-header .searchform:hover input,
 .top-header .searchform input:focus {
 	width:200px;
 	box-shadow:none;
