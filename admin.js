@@ -12,18 +12,25 @@ jQuery(document).ready(function ($) {
             console.log(attachment);
             var attachment_url = attachment.sizes.large.url;
             var attachment_width = attachment.sizes.large.width;
-            makeImageDialog(attachment_url, attachment_width);
+            makeCropper(attachment_url, attachment_width);
         });
 
-        function makeImageDialog(attachment_url, attachment_width) {
+        function makeCropper(attachment_url, attachment_width) {
             var cropper =
                 '<div class="featuredCropper">' +
                 '<div id="featuredWrapper"><img src="' + attachment_url + '" /><div class="drag"></div></div>' +
                 '</div>';
             $('body').append(cropper);
+            initDrag(attachment_url,attachment_width);
+        }
+
+        function initDrag(attachment_url, attachment_width) {
             var drag_height = (2 * attachment_width) / 19;
             var drag = $('.drag');
-            drag.css({'height': drag_height});
+            drag.css({
+                'height': drag_height,
+                'background-image': 'url('+attachment_url+')'
+            });
             drag.draggable({containment: "#featuredWrapper", axis: "y"})
         }
 
