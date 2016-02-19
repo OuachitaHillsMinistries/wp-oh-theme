@@ -13,6 +13,9 @@ $section = getTopLevelSection();
 					alt="Ouachita Hills Ministries"
 				/>
 			</a></h2>
+
+			<?php get_search_form(); ?>
+
 			<nav class="navbar navbar-default"> <!-- navbar-fixed-top -->
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
@@ -40,7 +43,6 @@ $section = getTopLevelSection();
 						<ul class="nav navbar-nav">
 							<?php echo getNavPageList(); ?>
 						</ul>
-						<?php get_search_form(); ?>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
 			</nav>

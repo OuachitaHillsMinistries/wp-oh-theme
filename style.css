@@ -33,6 +33,49 @@ html body {
 	padding: .5em;
 }
 
+.top-header .searchform {
+	position: absolute;
+	right: 1.5em;
+	top: 1.5em;
+	background-color: white;
+	height:30px;
+}
+
+.top-header .searchform .form-group {
+	height:100%;
+	margin:-2px 0 0 0;
+}
+
+.top-header .searchform * {
+	display:inline-block;
+	border:none;
+	background:transparent;
+}
+
+.top-header .searchform button {
+	background:#e7e7e7;
+	height:100%;
+	padding:0 .5em;
+}
+
+.top-header .searchform input {
+	width:75px;
+
+	-webkit-transition: width .55s ease;
+	-moz-transition: width .55s ease;
+	-ms-transition: width .55s ease;
+	-o-transition: width .55s ease;
+	transition: width .55s ease;
+}
+
+.top-header .searchform:hover input,
+.top-header .searchform input:focus {
+	width:200px;
+	box-shadow:none;
+}
+
+/* === Nav Bar === */
+
 .navbar {
 	border-radius: 0;
 	height: 3.6em;
@@ -46,8 +89,6 @@ html body {
 .navbar.navbar-fixed-top {
 	position: fixed;
 }
-
-/* === Nav Bar === */
 
 .navbar > .container-fluid .navbar-brand {
 	background:#23527c;
