@@ -16,28 +16,76 @@ function blankslate_setup() {
 		array( 'main-menu' => __( 'Main Menu', 'blankslate' ) )
 	);
 
-	add_image_size( 'medium-large', 600, 600 );
+	add_image_size( 'mediumLarge', 600, 600 );
 }
 
-add_action( 'wp_enqueue_scripts', 'blankslate_load_scripts' );
-function blankslate_load_scripts() {
+add_filter ( 'wp_prepare_attachment_for_js', 'ohMakeCustomSizesAccessibleToJs', 10, 3  );
+function ohMakeCustomSizesAccessibleToJs( $response, $attachment, $meta ){
+
+	$size_array = array( 'mediumLarge') ;
+
+	foreach ( $size_array as $size ):
+
+		if ( isset( $meta['sizes'][ $size ] ) ) {
+			$attachment_url = wp_get_attachment_url( $attachment->ID );
+			$base_url = str_replace( wp_basename( $attachment_url ), '', $attachment_url );
+			$size_meta = $meta['sizes'][ $size ];
+
+			$response['sizes'][ $size ] = array(
+				'height'        => $size_meta['height'],
+				'width'         => $size_meta['width'],
+				'url'           => $base_url . $size_meta['file'],
+				'orientation'   => $size_meta['height'] > $size_meta['width'] ? 'portrait' : 'landscape',
+			);
+		}
+
+	endforeach;
+
+	return $response;
+}
+
+add_action( 'wp_enqueue_scripts', 'ohEnqueueFrontEndScripts' );
+function ohEnqueueFrontEndScripts() {
 	$themeDir = esc_url( get_template_directory_uri() );
 
-	wp_enqueue_style( 'ohUnsliderCss', "$themeDir/css/unslider.css" );
-	wp_enqueue_style( 'ohBootstrapCss', "$themeDir/css/bootstrap.min.css" );
-	wp_enqueue_style( 'ohLightboxCss', "$themeDir/js/lightbox2/css/lightbox.min.css" );
+	wp_enqueue_style( 'unslider', "$themeDir/css/unslider.css" );
+	wp_enqueue_style( 'bootstrap', "$themeDir/css/bootstrap.min.css" );
+	wp_enqueue_style( 'lightbox2', "$themeDir/js/lightbox2/css/lightbox.min.css" );
 	wp_enqueue_style( 'ohCss', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'ohBootstrap', "$themeDir/js/bootstrap.min.js", array( 'jquery' ) );
-	wp_enqueue_script( 'ohUnslider', "$themeDir/main.js", array( 'jquery' ) );
+	wp_enqueue_script( 'bootstrap', "$themeDir/js/bootstrap.min.js", array( 'jquery' ) );
+	wp_enqueue_script( 'unslider', "$themeDir/main.js", array( 'jquery' ) );
 	wp_enqueue_script(
-		'ohLightboxJs',
+		'lightbox2',
 		"$themeDir/js/lightbox2/js/lightbox.min.js",
 		array( 'jquery' ),
 		false,
 		true
 	);
 	wp_enqueue_script( 'ohMain', "$themeDir/unslider/src/js/unslider.js", array( 'jquery', 'ohUnslider' ) );
+}
+
+add_action( 'admin_enqueue_scripts', 'ohEnqueueAdminScripts' );
+function ohEnqueueAdminScripts() {
+	$themeDir = esc_url( get_template_directory_uri() );
+
+	wp_enqueue_style( 'oh-jquery-ui', "$themeDir/includes/jquery-ui-1.11.4.custom/jquery-ui.min.css" );
+	wp_enqueue_style( 'ohAdmin', "$themeDir/admin.css" );
+
+	wp_enqueue_script(
+		'oh-jquery-ui',
+		"$themeDir/includes/jquery-ui-1.11.4.custom/jquery-ui.min.js",
+		array( 'jquery' )
+	);
+	wp_enqueue_script( 'ohAdmin', "$themeDir/admin.js", array( 'jquery', 'oh-jquery-ui' ) );
+}
+
+add_action( 'wp_ajax_save_featured_image_position', 'ohSaveFeaturedImagePosition' );
+
+function ohSaveFeaturedImagePosition() {
+	$result = update_post_meta($_POST['post'],'ohHeroPosition',$_POST['percent']);
+	echo (is_wp_error($result)) ? 'error' : 'success';
+	wp_die(); // this is required to terminate immediately and return a proper response
 }
 
 add_action( 'comment_form_before', 'blankslate_enqueue_comment_reply_script' );
@@ -101,7 +149,7 @@ function ohImageGallery() {
 		$images = twp_the_post_images();
 		if ( $images ) {
 			$galleryList = makeImageList( $images, 'page_gallery', 'thumbnail' );
-			$sliderList  = makeImageList( $images, 'page_slider', 'medium-large' );
+			$sliderList  = makeImageList( $images, 'page_slider', 'mediumLarge' );
 			$gallery     = "<div class='gallery'><ul>$galleryList</ul></div>";
 			$slider      = "<div class='slider'><ul>$sliderList</ul></div>";
 			echo "<div class='images'>$gallery $slider</div>";
