@@ -83,7 +83,7 @@ function ohEnqueueAdminScripts() {
 add_action( 'wp_ajax_save_featured_image_position', 'ohSaveFeaturedImagePosition' );
 
 function ohSaveFeaturedImagePosition() {
-	$result = add_post_meta($_POST['post'],'ohHeroPosition',$_POST['percent']);
+	$result = update_post_meta($_POST['post'],'ohHeroPosition',$_POST['percent']);
 	echo (is_wp_error($result)) ? 'error' : 'success';
 	wp_die(); // this is required to terminate immediately and return a proper response
 }
