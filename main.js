@@ -41,7 +41,6 @@ jQuery(document).ready(function($) {
         animation: 'fade',
         animateHeight: true,
         arrows: {
-            //  Unslider default behaviour
             prev: '<a class="unslider-arrow prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>',
             next: '<a class="unslider-arrow next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>'
         }
@@ -53,7 +52,6 @@ jQuery(document).ready(function($) {
     var stickyNavTop = navbar.offset().top;
 
     var stickyNav = function(){
-        var content = $('#container');
         var navbar = $('.navbar');
         var scrollTop = $(window).scrollTop();
 
