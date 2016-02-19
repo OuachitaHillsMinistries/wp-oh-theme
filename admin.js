@@ -26,12 +26,19 @@ jQuery(document).ready(function ($) {
 
         function initDrag(attachment_url, attachment_width) {
             var drag_height = (2 * attachment_width) / 19;
-            var drag = $('.drag');
-            drag.css({
+            var drag_window = $('.drag');
+            drag_window.css({
                 'height': drag_height,
                 'background-image': 'url('+attachment_url+')'
             });
-            drag.draggable({containment: "#featuredWrapper", axis: "y"})
+            drag_window.draggable({
+                containment: "#featuredWrapper",
+                axis: "y",
+                drag: function() {
+                    var y1 = drag_window.position().top;
+                    var y2 = y1 + drag_height;
+                }
+            })
         }
 
         $(document).keyup(function (e) {
