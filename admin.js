@@ -1,4 +1,6 @@
 jQuery(document).ready(function ($) {
+    var attachment;
+
     if (typeof wp.media !== 'undefined') {
         console.log("I'm here!");
         $('#publish').click(function () {
@@ -8,10 +10,9 @@ jQuery(document).ready(function ($) {
         var imageSelector = wp.media.featuredImage.frame();
 
         imageSelector.on('select', function () {
-            var attachment = getAttachment();
-            console.log(attachment);
-            var attachment_url = attachment.sizes.large.url;
-            var attachment_width = attachment.sizes.large.width;
+            attachment = imageSelector.state().get('selection').first().toJSON();
+            var attachment_url = attachment.sizes.mediumLarge.url;
+            var attachment_width = attachment.sizes.mediumLarge.width;
             makeCropper(attachment_url, attachment_width);
         });
 
@@ -49,19 +50,24 @@ jQuery(document).ready(function ($) {
             drag: function() {
                 var y1 = drag_window.position().top;
                 var y2 = y1 + drag_height;
+
+                console.log(y1 + ', ' + y2 + ', ' + calculatePercent(y1,y2));
+                console.log(attachment.sizes.mediumLarge.height);
+                console.log(attachment)
             }
         })
     }
 
-    function featuredImageCropSave() {
-        console.log('Saving!');
-        var attachment = getAttachment();
-        var attachment_height = attachment.sizes.large.height;
-        closeCropper();
+    function calculatePercent(y1,y2) {
+        var height = attachment.sizes.mediumLarge.height;
+        var decimal = y1 / (height - (y2 - y1));
+
+        return decimal * 100;
     }
 
-    function getAttachment() {
-        return imageSelector.state().get('selection').first().toJSON();
+    function featuredImageCropSave() {
+        console.log('Saving!');
+        closeCropper();
     }
 
     function featuredImageCropCancel() {

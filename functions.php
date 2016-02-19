@@ -16,7 +16,32 @@ function blankslate_setup() {
 		array( 'main-menu' => __( 'Main Menu', 'blankslate' ) )
 	);
 
-	add_image_size( 'medium-large', 600, 600 );
+	add_image_size( 'mediumLarge', 600, 600 );
+}
+
+add_filter ( 'wp_prepare_attachment_for_js', 'ohMakeCustomSizesAccessibleToJs', 10, 3  );
+function ohMakeCustomSizesAccessibleToJs( $response, $attachment, $meta ){
+
+	$size_array = array( 'mediumLarge') ;
+
+	foreach ( $size_array as $size ):
+
+		if ( isset( $meta['sizes'][ $size ] ) ) {
+			$attachment_url = wp_get_attachment_url( $attachment->ID );
+			$base_url = str_replace( wp_basename( $attachment_url ), '', $attachment_url );
+			$size_meta = $meta['sizes'][ $size ];
+
+			$response['sizes'][ $size ] = array(
+				'height'        => $size_meta['height'],
+				'width'         => $size_meta['width'],
+				'url'           => $base_url . $size_meta['file'],
+				'orientation'   => $size_meta['height'] > $size_meta['width'] ? 'portrait' : 'landscape',
+			);
+		}
+
+	endforeach;
+
+	return $response;
 }
 
 add_action( 'wp_enqueue_scripts', 'ohEnqueueFrontEndScripts' );
@@ -116,7 +141,7 @@ function ohImageGallery() {
 		$images = twp_the_post_images();
 		if ( $images ) {
 			$galleryList = makeImageList( $images, 'page_gallery', 'thumbnail' );
-			$sliderList  = makeImageList( $images, 'page_slider', 'medium-large' );
+			$sliderList  = makeImageList( $images, 'page_slider', 'mediumLarge' );
 			$gallery     = "<div class='gallery'><ul>$galleryList</ul></div>";
 			$slider      = "<div class='slider'><ul>$sliderList</ul></div>";
 			echo "<div class='images'>$gallery $slider</div>";
