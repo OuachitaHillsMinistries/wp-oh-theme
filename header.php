@@ -9,7 +9,7 @@ $section = getTopLevelSection();
 		<div class="top-header">
 			<h2><a href="<?php echo home_url() ?>">
 				<img
-					src="<?php bloginfo('stylesheet_directory'); ?>/images/OHM-Logo-Responsive-Color-1-Medium.png"
+					src="<?php bloginfo('stylesheet_directory'); ?>/images/OHM Logo Responsive White 1 Small.png"
 					alt="Ouachita Hills Ministries"
 				/>
 			</a></h2>
