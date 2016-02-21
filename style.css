@@ -101,6 +101,7 @@ html body {
 
 .navbar.navbar-fixed-top {
 	position: fixed;
+	height:2.4em;
 }
 
 .navbar-brand {
