@@ -93,8 +93,10 @@ html body {
 	margin-bottom: 0;
 	position: absolute;
 	width: 100%;
-	bottom: 0;
+	bottom: -1px;
 	left: 0;
+	background-color:transparent;
+	border:none;
 }
 
 .navbar.navbar-fixed-top {
@@ -126,12 +128,10 @@ html body {
 	text-decoration: none;
 }
 
-.navbar-nav > li {
-	margin-top:-1px;
-}
-
-.navbar-nav > li > a {
+.navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:focus {
 	padding:.45em 1em;
+	/*background-color:white;*/
 }
 
 .navbar-fixed-top .navbar-nav > li > a {
@@ -189,11 +189,14 @@ html body {
 
 .college .navbar-default .navbar-nav > li > a:focus,
 .college .navbar-default .navbar-nav > li > a:hover,
-.college .navbar-default .navbar-nav > li > a,
-.college .navbar-default .navbar-nav > .active > a,
-.college .navbar-default .navbar-nav > .active > a:focus,
-.college .navbar-default .navbar-nav > .active > a:hover {
-	color: #2d5a3a;
+.college .navbar-default .navbar-nav > li > a {
+	color:white;
+}
+
+.college .navbar-default .navbar-nav > li.active > a,
+.college .navbar-default .navbar-nav > li > a:focus,
+.college .navbar-default .navbar-nav > li > a:hover {
+	color:#2d5a3a;
 }
 
 /* === Home === */
@@ -315,7 +318,8 @@ body.home {
 .jumbotron {
 	background-position: 50% 25%;
 	background-size: cover;
-	min-height: 25vh;
+	min-height: 25vw;
+	margin:-5vw -5vw 5vw -5vw;
 }
 
 .meta .entry-title {
