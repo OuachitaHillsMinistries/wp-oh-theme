@@ -25,8 +25,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<div class="text">
 			<?php the_content(); ?>
 			<?php edit_post_link(); ?>
+			<div class="entry-links"><?php wp_link_pages(); ?></div>
 		</div>
-		<div class="entry-links"><?php wp_link_pages(); ?></div>
 		<?php ohImageGallery(); ?>
 	</section>
 </article>
