@@ -261,6 +261,12 @@ body.home {
 	left: .25em;
 }
 
+/* === Misc Pages === */
+
+.post header {
+	margin:1em;
+}
+
 /* === Pages === */
 
 .jumbotron {
