@@ -138,11 +138,6 @@ html body {
 	padding:.5em 1em;
 }
 
-.navbar-nav > li > .dropdown-menu {
-	border-top: medium none;
-	margin-left: -1px;
-}
-
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus,
 .dropdown-menu > li > a:focus,
@@ -150,19 +145,22 @@ html body {
 	background-color:#e7e7e7;
 }
 
-.open > .dropdown-menu {
+.navbar .open > .dropdown-menu {
 	-webkit-transform: scale(1, 1);
 	transform: scale(1, 1);
 	opacity:1;
 }
 
-.dropdown-menu {
+.navbar .dropdown-menu {
 	opacity:.3;
 	transform: scale(1,0);
 	-webkit-transform: scale(1, 0);
 	display: block;
 	transition: opacity 0.1s linear;
 	-webkit-transition: opacity 0.1s linear;
+	border:none;
+	margin-left: -1px;
+	border-radius:0;
 }
 
 /* === Section Colors === */
