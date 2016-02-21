@@ -310,6 +310,14 @@ body.home {
 	min-height: 25vh;
 }
 
+#content:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
 .meta .entry-title {
 	margin: 0 0 0 .4em;
 }
