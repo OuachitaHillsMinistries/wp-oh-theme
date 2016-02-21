@@ -168,8 +168,8 @@ function ohImageGallery() {
 	if ( is_callable( 'twp_the_post_images' ) ) {
 		$images = twp_the_post_images();
 		if ( $images ) {
-			$galleryList = makeImageList( $images, 'page_gallery', 'thumbnail' );
-			$sliderList  = makeImageList( $images, 'page_slider', 'mediumLarge' );
+			$galleryList = makeImageList( $images, 'page_gallery', 'thumbnail', 'thumbnail' );
+			$sliderList  = makeImageList( $images, 'page_slider', 'mediumLarge', '' );
 			$gallery     = "<div class='gallery'><ul>$galleryList</ul></div>";
 			$slider      = "<div class='slider'><ul>$sliderList</ul></div>";
 			echo "<div class='images'>$gallery $slider</div>";
@@ -177,7 +177,7 @@ function ohImageGallery() {
 	}
 }
 
-function makeImageList( $images, $lightboxPrefix, $thumbSize ) {
+function makeImageList( $images, $lightboxPrefix, $thumbSize, $classes ) {
 	$postId       = get_the_ID();
 	$lightboxData = $lightboxPrefix . $postId;
 	$imageList    = '';
@@ -185,8 +185,8 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize ) {
 	foreach ( $images as $image ) {
 		$url    = wp_get_attachment_image_src( $image->id, 'large' )[0];
 		$src    = wp_get_attachment_image_src( $image->id, $thumbSize )[0];
-		$format = '<li><a href="%s" data-lightbox="%s" class="thumbnail"><img src="%s" /></a></li>';
-		$imageList .= sprintf( $format, $url, $lightboxData, $src );
+		$format = '<li><a href="%s" data-lightbox="%s" class="%s"><img src="%s" /></a></li>';
+		$imageList .= sprintf( $format, $url, $lightboxData, $classes, $src );
 	}
 
 	return $imageList;
