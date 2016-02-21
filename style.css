@@ -29,7 +29,7 @@ html body {
 
 .top-header h2 img {
 	width: 7em;
-	margin: .5em 5%;
+	margin: .5em 5vw;
 }
 
 /* === Search === */
@@ -66,7 +66,7 @@ html body {
 
 .top-header .searchform {
 	position: absolute;
-	right: 5%;
+	right: 5vw;
 	top: 1.9em;
 }
 
@@ -102,7 +102,7 @@ html body {
 }
 
 .navbar-brand {
-	padding:.37em 1em;
+	padding:.37em 1em .37em 5vw;
 	height:auto;
 }
 
@@ -218,12 +218,12 @@ body.home {
 }
 
 .start {
-	padding: 5%;
+	padding: 5vw;
 }
 
 .start h1 {
 	font-weight: bold;
-	margin-bottom: 5%;
+	margin-bottom: 5vw;
 }
 
 .start ul {
@@ -298,8 +298,8 @@ body.home {
 
 /* === Misc Pages === */
 
-.single.post header, .search #content {
-	margin: 5%;
+.single.post header, #content {
+	margin: 5vw;
 }
 
 /* === Pages === */
@@ -308,10 +308,6 @@ body.home {
 	background-position: 50% 25%;
 	background-size: cover;
 	min-height: 25vh;
-}
-
-.meta {
-	margin: 0 1em;
 }
 
 .meta .entry-title {
@@ -390,17 +386,17 @@ html {
 
 body {
 	/* Margin bottom by footer height */
-	margin-bottom: 60px;
+	margin-bottom: 3.5em;
 }
 
 .footer {
-	padding: 5%;
+	padding: 1em 5vw;
 	clear: both;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
 	/* Set the fixed height of the footer here */
-	height: 60px;
+	height: 3.5em;
 	color:white;
 	background: #3f3f3d;
 }
@@ -417,7 +413,6 @@ body {
 	.meta {
 		width: 20em;
 		float: left;
-		margin-left: 3em;
 	}
 
 	.entry-content .text {
