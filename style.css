@@ -171,7 +171,8 @@ html body {
 
 .academy .top-header,
 .academy .navbar > .container-fluid .navbar-brand,
-.academy .nav-pills > li.active > a {
+.academy .nav-pills > li.active > a,
+.start li a {
 	background: #23527c;
 }
 
@@ -237,17 +238,16 @@ body.home {
 .start li a {
 	padding: .5em;
 	display: block;
-	background-color: #337AB7;
-	color: white;
-	transition: background-color 0.2s ease;
 	margin: 0 2px;
 	text-decoration: none;
+	opacity:.7;
+	transition: opacity 0.2s ease;
+	color:white;
 }
 
 .start li a:hover {
-	color: white;
 	text-decoration: none;
-	background-color: #5AB51F;
+	opacity:1;
 }
 
 .news {
