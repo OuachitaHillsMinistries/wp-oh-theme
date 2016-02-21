@@ -143,6 +143,25 @@ function blankslate_comments_number( $count ) {
 
 add_editor_style( 'style.css' );
 
+function bodyClasses() {
+	$classes = 'no-js';
+	if ( isCollege() && !isAcademy() ) {
+		$classes .= ' college';
+	} elseif ( isAcademy() && !isCollege() ) {
+		$classes .= ' academy';
+	}
+	if (isAcademyHome()) {
+		$classes .= ' academyHome';
+	}
+	if (isCollegeHome()) {
+		$classes .= ' collegeHome';
+	}
+	if (is_home()) {
+		$classes .= ' home';
+	}
+	body_class($classes);
+}
+
 /* === Image Galleries === */
 
 function ohImageGallery() {

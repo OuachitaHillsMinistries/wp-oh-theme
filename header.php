@@ -1,10 +1,10 @@
-<?php include 'head.php'; ?>
+<?php require_once 'head.php'; ?>
 
 <?php
 $section = getTopLevelSection();
 ?>
 
-<body <?php body_class(); ?>>
+<body <?php bodyClasses(); ?>>
 	<div id="wrapper" class="hfeed">
 		<div class="top-header">
 			<h2><a href="<?php echo home_url() ?>">
