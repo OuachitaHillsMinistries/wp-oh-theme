@@ -135,7 +135,8 @@ html body {
 
 /* === Section Colors === */
 
-.academy .top-header {
+.academy .top-header,
+.academy .navbar > .container-fluid .navbar-brand{
 	background: #23527c;
 }
 
@@ -148,11 +149,8 @@ html body {
 	color: #23527c;
 }
 
-.academy .navbar > .container-fluid .navbar-brand {
-	background:#23527c;
-}
-
-.college .top-header {
+.college .top-header,
+.college .navbar > .container-fluid .navbar-brand{
 	background: #197f1c;
 }
 
@@ -163,10 +161,6 @@ html body {
 .college .navbar-default .navbar-nav > .active > a:focus,
 .college .navbar-default .navbar-nav > .active > a:hover {
 	color: #197f1c;
-}
-
-.college .navbar > .container-fluid .navbar-brand {
-	background:#197f1c;
 }
 
 /* === Home === */
