@@ -290,9 +290,13 @@ body.home {
 	left: .25em;
 }
 
+/* === Plural Posts === */
+
+
+
 /* === Misc Pages === */
 
-.post header {
+.post header, .search #content {
 	margin:1em;
 }
 
