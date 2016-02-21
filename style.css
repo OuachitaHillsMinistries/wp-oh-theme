@@ -20,7 +20,7 @@ html body {
 
 .top-header {
 	position: relative;
-	padding-bottom: 3.6em;
+	padding-bottom: 2.4em;
 	background: #23527c;
 }
 
@@ -77,7 +77,8 @@ html body {
 
 .navbar {
 	border-radius: 0;
-	height: 3.6em;
+	height:2.4em;
+	min-height:0;
 	margin-bottom: 0;
 	position: absolute;
 	width: 100%;
@@ -87,6 +88,11 @@ html body {
 
 .navbar.navbar-fixed-top {
 	position: fixed;
+}
+
+.navbar-brand {
+	padding:.4em 1em;
+	height:auto;
 }
 
 .navbar > .container-fluid .navbar-brand {
@@ -117,6 +123,14 @@ html body {
 
 .navbar-nav > li {
 	margin-top:-1px;
+}
+
+.navbar-nav > li > a {
+	padding:.45em 1em;
+}
+
+.navbar-fixed-top .navbar-nav > li > a {
+	padding:.5em 1em;
 }
 
 .navbar-nav > li > .dropdown-menu {
