@@ -304,12 +304,6 @@ body.home {
 
 /* === Pages === */
 
-.jumbotron {
-	background-position: 50% 25%;
-	background-size: cover;
-	min-height: 25vh;
-}
-
 #content:after {
 	content: ".";
 	display: block;
@@ -318,8 +312,14 @@ body.home {
 	visibility: hidden;
 }
 
+.jumbotron {
+	background-position: 50% 25%;
+	background-size: cover;
+	min-height: 25vh;
+}
+
 .meta .entry-title {
-	margin: 0 0 0 .4em;
+	margin: 0 1em 0 0;
 }
 
 .subpages {
