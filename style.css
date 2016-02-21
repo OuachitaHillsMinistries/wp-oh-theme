@@ -151,7 +151,7 @@ html body {
 
 .college .top-header,
 .college .navbar > .container-fluid .navbar-brand{
-	background: #197f1c;
+	background: #224d23;
 }
 
 .college .navbar-default .navbar-nav > li > a:focus,
@@ -160,7 +160,7 @@ html body {
 .college .navbar-default .navbar-nav > .active > a,
 .college .navbar-default .navbar-nav > .active > a:focus,
 .college .navbar-default .navbar-nav > .active > a:hover {
-	color: #197f1c;
+	color: #224d23;
 }
 
 /* === Home === */
