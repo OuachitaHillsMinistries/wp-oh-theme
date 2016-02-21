@@ -88,13 +88,13 @@ html body {
 
 .navbar {
 	border-radius: 0;
-	height:2.4em;
+	height:2.34em;
 	min-height:0;
 	margin-bottom: 0;
 	position: absolute;
 	width: 100%;
-	bottom: -1px;
 	left: 0;
+	bottom:-1px;
 	background-color:transparent;
 	border:none;
 }
@@ -183,6 +183,7 @@ html body {
 }
 
 .academy .top-header,
+.academy .navbar,
 .academy .navbar > .container-fluid .navbar-brand,
 .academy .nav-pills > li.active > a,
 .start li a {
@@ -197,6 +198,7 @@ html body {
 }
 
 .college .top-header,
+.college .navbar,
 .college .navbar > .container-fluid .navbar-brand,
 .college .nav-pills > li.active > a {
 	background: #2d5a3a;
