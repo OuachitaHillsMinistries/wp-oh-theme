@@ -144,6 +144,7 @@ html body {
 }
 
 .navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
 .dropdown-menu > li > a:focus,
 .dropdown-menu > li > a:hover{
 	background-color:#e7e7e7;
@@ -151,15 +152,17 @@ html body {
 
 /* === Section Colors === */
 
+.navbar-default .navbar-nav > li > a {
+	color:white;
+}
+
 .top-header,
 .navbar > .container-fluid .navbar-brand,
 .nav-pills > li.active > a {
 	background: #3f3f3d;
 }
 
-.navbar-default .navbar-nav > li > a:focus,
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a,
+
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
@@ -172,12 +175,10 @@ html body {
 	background: #23527c;
 }
 
+
+.academy .navbar-default .navbar-nav > li.active > a,
 .academy .navbar-default .navbar-nav > li > a:focus,
-.academy .navbar-default .navbar-nav > li > a:hover,
-.academy .navbar-default .navbar-nav > li > a,
-.academy .navbar-default .navbar-nav > .active > a,
-.academy .navbar-default .navbar-nav > .active > a:focus,
-.academy .navbar-default .navbar-nav > .active > a:hover {
+.academy .navbar-default .navbar-nav > li > a:hover {
 	color: #23527c;
 }
 
@@ -185,12 +186,6 @@ html body {
 .college .navbar > .container-fluid .navbar-brand,
 .college .nav-pills > li.active > a {
 	background: #2d5a3a;
-}
-
-.college .navbar-default .navbar-nav > li > a:focus,
-.college .navbar-default .navbar-nav > li > a:hover,
-.college .navbar-default .navbar-nav > li > a {
-	color:white;
 }
 
 .college .navbar-default .navbar-nav > li.active > a,
