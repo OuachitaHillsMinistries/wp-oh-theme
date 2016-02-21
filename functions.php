@@ -53,8 +53,8 @@ function ohEnqueueFrontEndScripts() {
 	wp_enqueue_style( 'lightbox2', "$themeDir/js/lightbox2/css/lightbox.min.css" );
 	wp_enqueue_style( 'ohCss', get_stylesheet_uri() );
 
+	wp_enqueue_script( 'unslider', "$themeDir/unslider/src/js/unslider.js", array( 'jquery') );
 	wp_enqueue_script( 'bootstrap', "$themeDir/js/bootstrap.min.js", array( 'jquery' ) );
-	wp_enqueue_script( 'unslider', "$themeDir/main.js", array( 'jquery' ) );
 	wp_enqueue_script(
 		'lightbox2',
 		"$themeDir/js/lightbox2/js/lightbox.min.js",
@@ -62,7 +62,8 @@ function ohEnqueueFrontEndScripts() {
 		false,
 		true
 	);
-	wp_enqueue_script( 'ohMain', "$themeDir/unslider/src/js/unslider.js", array( 'jquery', 'ohUnslider' ) );
+
+	wp_enqueue_script( 'ohMain', "$themeDir/main.js", array( 'jquery', 'unslider' ) );
 }
 
 add_action( 'admin_enqueue_scripts', 'ohEnqueueAdminScripts' );
@@ -141,6 +142,25 @@ function blankslate_comments_number( $count ) {
 }
 
 add_editor_style( 'style.css' );
+
+function bodyClasses() {
+	$classes = 'no-js';
+	if ( isCollege() && !isAcademy() ) {
+		$classes .= ' college';
+	} elseif ( isAcademy() && !isCollege() ) {
+		$classes .= ' academy';
+	}
+	if (isAcademyHome()) {
+		$classes .= ' academyHome';
+	}
+	if (isCollegeHome()) {
+		$classes .= ' collegeHome';
+	}
+	if (is_home()) {
+		$classes .= ' home';
+	}
+	body_class($classes);
+}
 
 /* === Image Galleries === */
 

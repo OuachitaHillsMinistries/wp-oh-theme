@@ -1,18 +1,21 @@
-<?php include 'head.php'; ?>
+<?php require_once 'head.php'; ?>
 
 <?php
 $section = getTopLevelSection();
 ?>
 
-<body <?php body_class(); ?>>
+<body <?php bodyClasses(); ?>>
 	<div id="wrapper" class="hfeed">
 		<div class="top-header">
 			<h2><a href="<?php echo home_url() ?>">
 				<img
-					src="<?php bloginfo('stylesheet_directory'); ?>/images/OHM-Logo-Responsive-Color-1-Medium.png"
+					src="<?php bloginfo('stylesheet_directory'); ?>/images/OHM Logo Responsive White 1 Small.png"
 					alt="Ouachita Hills Ministries"
 				/>
 			</a></h2>
+
+			<?php get_search_form(); ?>
+
 			<nav class="navbar navbar-default"> <!-- navbar-fixed-top -->
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
@@ -40,7 +43,6 @@ $section = getTopLevelSection();
 						<ul class="nav navbar-nav">
 							<?php echo getNavPageList(); ?>
 						</ul>
-						<?php get_search_form(); ?>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
 			</nav>
