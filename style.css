@@ -29,7 +29,7 @@ html body {
 
 .top-header h2 img {
 	width: 7em;
-	padding: .5em;
+	margin: .5em 5%;
 }
 
 /* === Search === */
@@ -66,8 +66,8 @@ html body {
 
 .top-header .searchform {
 	position: absolute;
-	right: 1.5em;
-	top: 1.5em;
+	right: 5%;
+	top: 1.9em;
 }
 
 .top-header .searchform input {
@@ -200,7 +200,7 @@ html body {
 
 body.home {
 	text-align: center;
-	background: transparent url('images/Mist_in_the_trees_-_Public_Domain.jpg') no-repeat fixed 50% 50%;
+	background: transparent url('images/A.Background.jpg') no-repeat fixed 50% 50%;
 	-webkit-background-size: cover;
 	background-size: cover;
 }
@@ -292,12 +292,14 @@ body.home {
 
 /* === Plural Posts === */
 
-
+.plural {
+	max-width:40em;
+}
 
 /* === Misc Pages === */
 
-.post header, .search #content {
-	margin:1em;
+.single.post header, .search #content {
+	margin: 5%;
 }
 
 /* === Pages === */
@@ -312,7 +314,7 @@ body.home {
 	margin: 0 1em;
 }
 
-.entry-title {
+.meta .entry-title {
 	margin: 0 0 0 .4em;
 }
 
@@ -392,7 +394,7 @@ body {
 }
 
 .footer {
-	padding: 2em 3em 3em 3em;
+	padding: 5%;
 	clear: both;
 	position: absolute;
 	bottom: 0;
