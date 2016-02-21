@@ -154,7 +154,7 @@ html body {
 .top-header,
 .navbar > .container-fluid .navbar-brand,
 .nav-pills > li.active > a {
-	background: grey;
+	background: #3f3f3d;
 }
 
 .navbar-default .navbar-nav > li > a:focus,
@@ -163,7 +163,7 @@ html body {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
-	color: grey;
+	color: #3f3f3d;
 }
 
 .academy .top-header,
@@ -396,7 +396,7 @@ body {
 	/* Set the fixed height of the footer here */
 	height: 60px;
 	color:white;
-	background: grey;
+	background: #3f3f3d;
 }
 
 /* === Media Queries === */
