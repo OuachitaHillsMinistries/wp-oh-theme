@@ -93,8 +93,8 @@ html body {
 	margin-bottom: 0;
 	position: absolute;
 	width: 100%;
-	left: 0;
-	bottom:-1px;
+	left: 5vw;
+	bottom:0;
 	background-color:transparent;
 	border:none;
 }
@@ -102,27 +102,25 @@ html body {
 .navbar.navbar-fixed-top {
 	position: fixed;
 	height:2.4em;
+	left:0;
 }
 
 .navbar-brand {
-	padding:.37em 1em .37em 5vw;
+	padding:0;
 	height:auto;
 }
 
-.navbar-fixed-top .navbar-brand {
-	padding:.4em 1em;
+.navbar-brand > a {
+	padding:.37em 1em;
+	display:block;
 }
 
-.navbar > .container-fluid .navbar-brand {
-	margin:-1px 0 0 -16px;
+.navbar-fixed-top .navbar-brand  {
+	padding:.4em 1em;
 }
 
 .navbar.navbar-fixed-top .navbar-brand {
 	margin-top:0;
-}
-
-.navbar-brand a {
-	color:white;
 }
 
 .navbar-brand a:hover, .navbar-brand a:focus {
@@ -142,7 +140,9 @@ html body {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus,
 .dropdown-menu > li > a:focus,
-.dropdown-menu > li > a:hover{
+.dropdown-menu > li > a:hover,
+.navbar-brand,
+.navbar-default .navbar-brand:hover {
 	background-color:#e7e7e7;
 }
 
@@ -171,7 +171,6 @@ html body {
 }
 
 .top-header,
-.navbar > .container-fluid .navbar-brand,
 .nav-pills > li.active > a {
 	background: #3f3f3d;
 }
@@ -184,8 +183,6 @@ html body {
 }
 
 .academy .top-header,
-.academy .navbar,
-.academy .navbar > .container-fluid .navbar-brand,
 .academy .nav-pills > li.active > a,
 .start li a {
 	background: #23527c;
@@ -194,20 +191,20 @@ html body {
 
 .academy .navbar-default .navbar-nav > li.active > a,
 .academy .navbar-default .navbar-nav > li > a:focus,
-.academy .navbar-default .navbar-nav > li > a:hover {
+.academy .navbar-default .navbar-nav > li > a:hover,
+.academy .navbar-brand > a {
 	color: #23527c;
 }
 
 .college .top-header,
-.college .navbar,
-.college .navbar > .container-fluid .navbar-brand,
 .college .nav-pills > li.active > a {
 	background: #2d5a3a;
 }
 
 .college .navbar-default .navbar-nav > li.active > a,
 .college .navbar-default .navbar-nav > li > a:focus,
-.college .navbar-default .navbar-nav > li > a:hover {
+.college .navbar-default .navbar-nav > li > a:hover,
+.college .navbar-brand > a {
 	color:#2d5a3a;
 }
 
