@@ -90,8 +90,12 @@ html body {
 }
 
 .navbar-brand {
-	padding:.4em 1em;
+	padding:.37em 1em;
 	height:auto;
+}
+
+.navbar-fixed-top .navbar-brand {
+	padding:.4em 1em;
 }
 
 .navbar > .container-fluid .navbar-brand {
