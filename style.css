@@ -152,7 +152,8 @@ html body {
 /* === Section Colors === */
 
 .academy .top-header,
-.academy .navbar > .container-fluid .navbar-brand{
+.academy .navbar > .container-fluid .navbar-brand,
+.academy .nav-pills > li.active > a {
 	background: #23527c;
 }
 
@@ -166,8 +167,9 @@ html body {
 }
 
 .college .top-header,
-.college .navbar > .container-fluid .navbar-brand{
-	background: #224d23;
+.college .navbar > .container-fluid .navbar-brand,
+.college .nav-pills > li.active > a {
+	background: #2d5a3a;
 }
 
 .college .navbar-default .navbar-nav > li > a:focus,
@@ -176,7 +178,7 @@ html body {
 .college .navbar-default .navbar-nav > .active > a,
 .college .navbar-default .navbar-nav > .active > a:focus,
 .college .navbar-default .navbar-nav > .active > a:hover {
-	color: #224d23;
+	color: #2d5a3a;
 }
 
 /* === Home === */
@@ -378,7 +380,8 @@ body {
 	width: 100%;
 	/* Set the fixed height of the footer here */
 	height: 60px;
-	background-color: black;
+	color:white;
+	background: grey;
 }
 
 /* === Media Queries === */
