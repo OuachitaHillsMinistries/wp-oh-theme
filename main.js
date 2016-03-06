@@ -49,24 +49,28 @@ jQuery(document).ready(function($) {
     /* === Sticky navigation === */
 
     var navbar = $('.navbar');
-    var stickyNavTop = navbar.offset().top;
+    
+    if (navbar.length) {
+        var stickyNavTop = navbar.offset().top;
 
-    var stickyNav = function(){
-        var navbar = $('.navbar');
-        var scrollTop = $(window).scrollTop();
+        var stickyNav = function(){
+            var navbar = $('.navbar');
+            var scrollTop = $(window).scrollTop();
 
-        if (scrollTop > stickyNavTop) {
-            navbar.addClass('navbar-fixed-top');
-        } else {
-            navbar.removeClass('navbar-fixed-top');
-        }
-    };
+            if (scrollTop > stickyNavTop) {
+                navbar.addClass('navbar-fixed-top');
+            } else {
+                navbar.removeClass('navbar-fixed-top');
+            }
+        };
 
-    stickyNav();
-
-    $(window).on('scroll mousewheel', function() {
         stickyNav();
-    });
+
+        $(window).on('scroll mousewheel', function() {
+            stickyNav();
+        });
+    }
+    
 
     /* === Page Gallery & Slider === */
 
