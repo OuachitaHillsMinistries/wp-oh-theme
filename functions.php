@@ -195,16 +195,20 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize, $classes ) {
 /* === Front Page News Ticker === */
 
 function newsTicker() {
-	$items = '';
 	$posts = get_posts( array(
 		'post_type'        => 'ohnewsbulletin',
 		'post_status'      => 'publish'
 	) );
-	foreach ($posts as $post) {
+        
+        if ($posts) {
+            $items = '';
+            foreach ($posts as $post) {
 		$items .= "<li>{$post->post_title}</li>";
-	}
-	$atts = (count($posts) > 1) ? 'class="slider"' : 'class="slider single"';
-	echo "<div class='news'><div $atts><ul>$items</ul></div></div>";
+            }
+            $atts = (count($posts) > 1) ? 'class="slider"' : 'class="slider single"';
+            echo "<div class='news'><div $atts><ul>$items</ul></div></div>";
+        }
+	
 }
 
 /* News Ticker Custom Post Type */
