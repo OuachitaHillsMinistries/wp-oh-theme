@@ -48,7 +48,7 @@ add_action( 'wp_enqueue_scripts', 'ohEnqueueFrontEndScripts' );
 function ohEnqueueFrontEndScripts() {
 	$themeDir = esc_url( get_template_directory_uri() );
 
-	wp_enqueue_style( 'unslider', "$themeDir/css/unslider.css" );
+	wp_enqueue_style( 'unslider', "$themeDir/includes/unslider/dist/css/unslider.css" );
 	wp_enqueue_style( 'bootstrap', "$themeDir/includes/bootstrap/bootstrap.min.css" );
 	wp_enqueue_style( 'lightbox2', "$themeDir/includes/lightbox2/css/lightbox.min.css" );
 	wp_enqueue_style( 'ohCss', get_stylesheet_uri() );
