@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<?php
+$htmlClass = (is_home()) ? 'class="home"' : '';
+?>
+<html <?php language_attributes(); echo $htmlClass;?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">

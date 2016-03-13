@@ -221,17 +221,24 @@ html body {
 
 /* === Home === */
 
+html.home {
+	height:100%;
+}
+
 body.home {
 	text-align: center;
 	background: transparent url('images/A.Background.jpg') no-repeat fixed 50% 50%;
 	-webkit-background-size: cover;
 	background-size: cover;
+	display:flex;
+	min-height:100%;
+	margin-bottom:0;
 }
 
 .home .wrapper {
 	display: table;
 	max-width: 100%;
-	margin: 20% auto 0 auto;
+	margin: auto;
 }
 
 .start, .news {
