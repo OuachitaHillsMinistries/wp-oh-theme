@@ -50,14 +50,14 @@ function ohEnqueueFrontEndScripts() {
 
 	wp_enqueue_style( 'unslider', "$themeDir/css/unslider.css" );
 	wp_enqueue_style( 'bootstrap', "$themeDir/css/bootstrap.min.css" );
-	wp_enqueue_style( 'lightbox2', "$themeDir/js/lightbox2/css/lightbox.min.css" );
+	wp_enqueue_style( 'lightbox2', "$themeDir/includes/lightbox2/css/lightbox.min.css" );
 	wp_enqueue_style( 'ohCss', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'unslider', "$themeDir/unslider/src/js/unslider.js", array( 'jquery') );
 	wp_enqueue_script( 'bootstrap', "$themeDir/js/bootstrap.min.js", array( 'jquery' ) );
 	wp_enqueue_script(
 		'lightbox2',
-		"$themeDir/js/lightbox2/js/lightbox.min.js",
+		"$themeDir/includes/lightbox2/js/lightbox.min.js",
 		array( 'jquery' ),
 		false,
 		true
