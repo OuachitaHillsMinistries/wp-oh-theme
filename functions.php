@@ -169,10 +169,8 @@ function ohImageGallery() {
 		$images = twp_the_post_images();
 		if ( $images ) {
 			$galleryList = makeImageList( $images, 'page_gallery', 'thumbnail', 'thumbnail' );
-			$sliderList  = makeImageList( $images, 'page_slider', 'mediumLarge', '' );
 			$gallery     = "<div class='gallery'><ul>$galleryList</ul></div>";
-			$slider      = "<div class='slider'><ul>$sliderList</ul></div>";
-			echo "<div class='images'>$gallery $slider</div>";
+			echo "<div class='images'>$gallery</div>";
 		}
 	}
 }
