@@ -190,6 +190,33 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize, $classes ) {
 	return $imageList;
 }
 
+/* === Recent Posts === */
+
+function ohRecentPosts($catagory) {
+	$catId = get_category_id($catagory);
+	$posts = wp_get_recent_posts(array(
+		'numberposts' => 6,
+		'category' => $catId
+	));
+	$linkList = '';
+	foreach ($posts as $post) {
+		$url = get_permalink($post);
+		$img = get_the_post_thumbnail($post['ID'], 'thumbnail');
+		$img = ($img) ? $img : '<span class="dashicons dashicons-camera"></span>';
+		$title = $post['post_title'];
+		$format = '<li><a href="%s"><span class="thumbnail">%s</span>%s</a></li>';
+		$linkList .= sprintf( $format, $url, $img, $title );
+	}
+	$categoryUrl = get_category_link($catId);
+	$linkList .= "<li><a href='$categoryUrl' class=\"more\">More News...</a></li>";
+	echo "<ul class='recent-posts'>$linkList</ul>";
+}
+
+function get_category_id($cat_name){
+	$term = get_term_by('name', $cat_name, 'category');
+	return $term->term_id;
+}
+
 /* === Front Page News Ticker === */
 
 function newsTicker() {

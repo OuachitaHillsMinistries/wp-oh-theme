@@ -27,7 +27,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<?php edit_post_link(); ?>
 			<div class="entry-links"><?php wp_link_pages(); ?></div>
 		</div>
-		<?php ohImageGallery(); ?>
+		<?php
+		ohImageGallery();
+
+		if (isCollegeHome() || isAcademyHome()) {
+			ohRecentPosts(getTopLevelSection());
+		}
+		?>
 	</section>
 </article>
 <?php if ( ! post_password_required() ) comments_template( '', true ); ?>

@@ -412,6 +412,43 @@ body.home {
 	margin: 0 .5em .5em 0;
 }
 
+.recent-posts {
+	clear:both;
+	padding:0;
+	display:flex;
+	overflow:scroll;
+}
+
+.recent-posts li {
+	display:inline-block;
+	margin-bottom:10px;
+}
+
+.recent-posts a {
+	display:block;
+}
+
+.recent-posts .thumbnail {
+	width:160px;
+	height:160px;
+	display:flex;
+	margin:0 10px 10px 0;
+}
+
+.recent-posts .dashicons {
+	margin:auto;
+	font-size:40px;
+	width:40px;
+	height:40px;
+}
+
+.recent-posts .more {
+	height:160px;
+	line-height:160px;
+	width:100px;
+	text-align:center;
+}
+
 /* === Footer === */
 
 html {
