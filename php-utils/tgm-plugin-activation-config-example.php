@@ -69,11 +69,11 @@ function my_theme_register_required_plugins() {
 		// This is an example of how to include a plugin from a GitHub repository in your theme.
 		// This presumes that the plugin code is based in the root of the GitHub repository
 		// and not in a subdirectory ('/src') of the repository.
-		array(
-			'name'      => 'Adminbar Link Comments to Pending',
-			'slug'      => 'adminbar-link-comments-to-pending',
-			'source'    => 'https://github.com/jrfnl/WP-adminbar-comments-to-pending/archive/master.zip',
-		),
+                    array(
+                            'name'      => 'Adminbar Link Comments to Pending',
+                            'slug'      => 'adminbar-link-comments-to-pending',
+                            'source'    => 'https://github.com/jrfnl/WP-adminbar-comments-to-pending/archive/master.zip',
+                    ),
 
 		// This is an example of how to include a plugin from the WordPress Plugin Repository.
 		array(

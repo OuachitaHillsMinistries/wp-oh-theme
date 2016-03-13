@@ -618,6 +618,12 @@ function ohThemeRegisterRequiredPlugins() {
 			'is_callable'        => '',
 			// If set, this callable will be be checked for availability to determine if a plugin is active.
 		),
+            
+                array(
+                        'name'      => 'GitHub Updater',
+                        'slug'      => 'github-updater',
+                        'source'    => 'https://github.com/afragen/github-updater/archive/master.zip',
+                ),
 
 	);
 
