@@ -52,21 +52,22 @@ jQuery(document).ready(function ($) {
     function initDragWindow() {
         var drag_window = $('.drag');
         drag_window.css({
-            'height': (2 * image.width) / 15,
+            'height': image.width / 4,
             'background-image': 'url(' + image.url + ')'
         });
         drag_window.draggable({
             containment: "#featuredWrapper",
             axis: "y",
             drag: function () {
-                drag_window.css('background-position','0 ' + calculatePercent() + '%');
+                var percent = calculatePercent();
+                drag_window.css('background-position','0 ' + percent + '%');
             }
         })
     }
 
     function calculatePercent() {
         var y1 = $('.drag').position().top;
-        var y2 = y1 + (2 * image.width) / 15;
+        var y2 = y1 + image.width / 4;
         var decimal = y1 / (image.height - (y2 - y1));
 
         if (decimal > 1)
@@ -94,15 +95,16 @@ jQuery(document).ready(function ($) {
             'post': $_GET['post']
         };
 
+        console.log(data);
+
         // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
         jQuery.post(ajaxurl, data, function(response) {
             console.log(response);
             if (response === 'error') {
                 alert("Oops! We had a problem saving this image's position. Sorry about that.");
             }
+            closeCropper();
         });
-
-        closeCropper();
     }
 
     function featuredImageCropCancel() {

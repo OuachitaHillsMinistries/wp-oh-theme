@@ -347,7 +347,7 @@ body.home {
 .jumbotron {
 	background-position: 50% 25%;
 	background-size: cover;
-	min-height: 25vw;
+	height: 25vw;
 	margin:-5vw -5vw 5vw -5vw;
 }
 

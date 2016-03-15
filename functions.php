@@ -53,7 +53,7 @@ function ohEnqueueFrontEndScripts() {
 	wp_enqueue_style( 'lightbox2', "$themeDir/includes/lightbox2/css/lightbox.min.css" );
 	wp_enqueue_style( 'ohCss', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'unslider', "$themeDir/unslider/src/js/unslider.js", array( 'jquery') );
+	wp_enqueue_script( 'unslider', "$themeDir/includes/unslider/src/js/unslider.js", array( 'jquery') );
 	wp_enqueue_script( 'bootstrap', "$themeDir/includes/bootstrap/bootstrap.min.js", array( 'jquery' ) );
 	wp_enqueue_script(
 		'lightbox2',
@@ -84,8 +84,8 @@ function ohEnqueueAdminScripts() {
 add_action( 'wp_ajax_save_featured_image_position', 'ohSaveFeaturedImagePosition' );
 
 function ohSaveFeaturedImagePosition() {
-	$result = update_post_meta($_POST['post'],'ohHeroPosition',$_POST['percent']);
-	echo (is_wp_error($result)) ? 'error' : 'success';
+	$result = update_post_meta($_POST['post'],'_ohHeroPosition',$_POST['percent']);
+	echo ($result) ? 'error' : 'success';
 	wp_die(); // this is required to terminate immediately and return a proper response
 }
 
