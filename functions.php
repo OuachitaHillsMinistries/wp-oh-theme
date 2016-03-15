@@ -85,7 +85,7 @@ add_action( 'wp_ajax_save_featured_image_position', 'ohSaveFeaturedImagePosition
 
 function ohSaveFeaturedImagePosition() {
 	$result = update_post_meta($_POST['post'],'_ohHeroPosition',$_POST['percent']);
-	echo ($result) ? 'error' : 'success';
+	echo ($result) ? 'success' : 'error';
 	wp_die(); // this is required to terminate immediately and return a proper response
 }
 
