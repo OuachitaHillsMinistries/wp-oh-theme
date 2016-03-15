@@ -414,7 +414,15 @@ body.home {
 
 .recent-posts {
 	clear:both;
-	padding:0;
+}
+
+.recent-posts h2 {
+	margin-bottom:1em;
+}
+
+.recent-posts ul {
+	clear:both;
+	padding:0 0 1em 0;
 	display:flex;
 	overflow:scroll;
 }
@@ -435,11 +443,23 @@ body.home {
 	margin:0 10px 10px 0;
 }
 
+.recent-posts a:hover .thumbnail {
+	border-color:#23527c;
+}
+
 .recent-posts .dashicons {
 	margin:auto;
 	font-size:40px;
 	width:40px;
 	height:40px;
+}
+
+.recent-posts a:hover {
+	text-decoration: none;
+}
+
+.recent-posts a:hover .title {
+	text-decoration: underline;
 }
 
 .recent-posts .more {
