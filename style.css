@@ -189,6 +189,26 @@ html body {
 	border-radius:0;
 }
 
+.navbar-collapse {
+	border-top:none;
+}
+
+.navbar-default .navbar-collapse.in .navbar-nav > li > a {
+	padding-left:5vw;
+	padding-right:5vw;
+}
+
+.navbar-default .navbar-collapse.in .navbar-nav li li a {
+	padding-left:10vw;
+	padding-right:10vw;
+	color:#e7e7e7;
+}
+
+.navbar-default .navbar-collapse.in .navbar-nav li li a:hover {
+	color:#2d5a3a;
+	background-color:#e7e7e7;
+}
+
 /* === Section Colors === */
 
 .navbar-default .navbar-nav > li > a {
