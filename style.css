@@ -86,7 +86,7 @@ html body {
 	width:200px;
 }
 
-/* === Navigation === */
+/* === Desktop Nav === */
 
 .ohNavbar {
 	height:3rem;
@@ -126,20 +126,20 @@ html body {
 	background-color:#e7e7e7;
 }
 
-.ohNav > li {
+.desktop .ohNav > li {
 	float:left;
 	list-style:none;
 	position: relative;
 }
 
-.section-selector > a,
-.ohNav > li.page_item_has_children > a {
+.ohNavbar .section-selector > a,
+.desktop .ohNav > li.page_item_has_children > a {
 	padding-right:3rem;
 	position:relative;
 }
 
 .section-selector > a:after,
-.ohNav > li.page_item_has_children > a:after {
+.desktop .ohNav > li.page_item_has_children > a:after {
 	font-family: 'dashicons', sans-serif;
 	content:"\f347";
 	position:absolute;
@@ -147,19 +147,19 @@ html body {
 	top:.2rem;
 }
 
-.ohNav > li > a:focus,
+.desktop .ohNav > li > a:focus,
 .ohNavbar a:hover {
 	background-color:#e7e7e7;
 	text-decoration: none;
 }
 
 .section-selector > a:focus + ul,
-.ohNav > li > a:focus + ul {
+.desktop .ohNav > li > a:focus + ul {
 	visibility:visible;
 }
 
 .section-selector ul,
-.ohNav li ul {
+.desktop .ohNav li ul {
 	visibility:hidden;
 	transition: visibility 0.1s;
 	padding-left:0;
@@ -168,8 +168,14 @@ html body {
 	top:3rem;
 }
 
-.ohNav ul a {
+.desktop .ohNav ul a {
 	display:block;
+}
+
+/* === Mobile Nav === */
+
+.mobile .ohNav {
+	display:none;
 }
 
 /* === Section Colors === */

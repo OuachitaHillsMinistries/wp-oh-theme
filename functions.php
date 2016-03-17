@@ -62,8 +62,9 @@ function ohEnqueueFrontEndScripts() {
 		false,
 		true
 	);
-
 	wp_enqueue_script( 'ohMain', "$themeDir/main.js", array( 'jquery', 'unslider' ) );
+
+	wp_enqueue_style( 'dashicons', get_stylesheet_directory_uri(), array('dashicons'), '1.0' );
 }
 
 add_action( 'admin_enqueue_scripts', 'ohEnqueueAdminScripts' );
