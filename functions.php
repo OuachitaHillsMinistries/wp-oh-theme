@@ -340,7 +340,6 @@ function getNavPageList() {
 		'child_of' => $parentId,
 		'depth'    => $depth,
 		'title_li' => null,
-		'walker'   => new wp_bootstrap_navwalker(),
 		'echo'     => false
 	) );
 
@@ -361,7 +360,6 @@ function getGlobalPagesHtml() {
 	return wp_list_pages( array(
 		'depth'     => 2,
 		'title_li'  => null,
-		'walker'    => new wp_bootstrap_navwalker(),
 		'echo'      => false,
 		'post_type' => 'ohglobalpage'
 	) );

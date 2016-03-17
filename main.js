@@ -14,21 +14,21 @@ jQuery(document).ready(function($) {
         }
     });
 
-    /* === Sticky navigation === */
+    /* === New Nav === */
 
-    var navbar = $('.navbar');
-    
+    var navbar = $('.ohNavbar');
+
     if (navbar.length) {
         var stickyNavTop = navbar.offset().top;
 
         var stickyNav = function(){
-            var navbar = $('.navbar');
+            var navbar = $('.ohNavbar');
             var scrollTop = $(window).scrollTop();
 
             if (scrollTop > stickyNavTop) {
-                navbar.addClass('navbar-fixed-top');
+                navbar.addClass('fixed');
             } else {
-                navbar.removeClass('navbar-fixed-top');
+                navbar.removeClass('fixed');
             }
         };
 
@@ -38,4 +38,33 @@ jQuery(document).ready(function($) {
             stickyNav();
         });
     }
+
+    $('.ohNav > li.page_item_has_children > a, .section-selector > a').click(function(e){
+        e.preventDefault();
+    });
+
+    /* === Sticky navigation === */
+
+    //var navbar = $('.navbar');
+    //
+    //if (navbar.length) {
+    //    var stickyNavTop = navbar.offset().top;
+    //
+    //    var stickyNav = function(){
+    //        var navbar = $('.navbar');
+    //        var scrollTop = $(window).scrollTop();
+    //
+    //        if (scrollTop > stickyNavTop) {
+    //            navbar.addClass('navbar-fixed-top');
+    //        } else {
+    //            navbar.removeClass('navbar-fixed-top');
+    //        }
+    //    };
+    //
+    //    stickyNav();
+    //
+    //    $(window).on('scroll mousewheel', function() {
+    //        stickyNav();
+    //    });
+    //}
 });

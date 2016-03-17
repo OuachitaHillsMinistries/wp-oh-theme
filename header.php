@@ -16,8 +16,20 @@ $section = getTopLevelSection();
 
 			<?php get_search_form(); ?>
 
-			<nav class="nav">
-			</nav>
+            <nav class="ohNavbar">
+                <div class="section-selector">
+                    <a href="#"><?php echo getTopLevelSection(); ?></a>
+                    <ul>
+                        <li><a href="<?php echo home_url() ?>">Ministries</a></li>
+                        <li><a href="<?php echo getAcademyUrl() ?>">Academy</a></li>
+                        <li><a href="<?php echo getCollegeUrl() ?>">College</a></li>
+                    </ul>
+                </div>
+
+                <ul class="ohNav">
+                    <?php echo getNavPageList(); ?>
+                </ul>
+            </nav>
 		</div>
 
 		<div id="container">
