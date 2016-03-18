@@ -62,8 +62,9 @@ function ohEnqueueFrontEndScripts() {
 		false,
 		true
 	);
-
 	wp_enqueue_script( 'ohMain', "$themeDir/main.js", array( 'jquery', 'unslider' ) );
+
+	wp_enqueue_style( 'dashicons', get_stylesheet_directory_uri(), array('dashicons'), '1.0' );
 }
 
 add_action( 'admin_enqueue_scripts', 'ohEnqueueAdminScripts' );
@@ -340,7 +341,6 @@ function getNavPageList() {
 		'child_of' => $parentId,
 		'depth'    => $depth,
 		'title_li' => null,
-		'walker'   => new wp_bootstrap_navwalker(),
 		'echo'     => false
 	) );
 
@@ -361,7 +361,6 @@ function getGlobalPagesHtml() {
 	return wp_list_pages( array(
 		'depth'     => 2,
 		'title_li'  => null,
-		'walker'    => new wp_bootstrap_navwalker(),
 		'echo'      => false,
 		'post_type' => 'ohglobalpage'
 	) );
