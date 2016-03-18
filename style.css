@@ -186,6 +186,10 @@ html body {
 	margin-left:1px;
 }
 
+.ohNavbar .burger:focus {
+	text-decoration:none;
+}
+
 .ohNavbar .burger .dashicons-menu {
 	line-height:3rem;
 }

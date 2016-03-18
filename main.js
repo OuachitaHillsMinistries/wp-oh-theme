@@ -46,9 +46,11 @@ jQuery(document).ready(function($) {
         if ($('.ohNavbar').width() < needed) {
             navbar.addClass('mobile');
             navbar.removeClass('desktop');
+            $('.ohNav').hide();
         } else {
             navbar.addClass('desktop');
             navbar.removeClass('mobile');
+            $('.ohNav').show();
         }
     };
 
@@ -79,6 +81,7 @@ jQuery(document).ready(function($) {
         stickyNav();
 
         $(window).on('scroll mousewheel', function() {
+            console.log('trying to be sticky');
             stickyNav();
         });
     }
