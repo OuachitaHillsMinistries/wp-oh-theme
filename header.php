@@ -26,11 +26,13 @@ $section = getTopLevelSection();
                     </ul>
                 </div>
 
+                <a href="#" class="toggle burger"><span class="dashicons dashicons-menu"></span> Navigation</a>
                 <ul class="ohNav">
                     <?php echo getNavPageList(); ?>
                 </ul>
 
-                <a href="#" class="burger"><span class="dashicons dashicons-menu"></span> Navigation</a>
+                <a href="#" class="toggle search-toggle"><span class="glyphicon glyphicon-search"></span> Search</a>
+                <?php get_search_form(); ?>
             </nav>
 		</div>
 

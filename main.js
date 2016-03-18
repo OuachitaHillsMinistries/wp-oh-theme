@@ -24,15 +24,20 @@ jQuery(document).ready(function($) {
         e.preventDefault();
     });
 
-    $('.burger').click(function() {
-        $('.ohNav').slideToggle();
+    var toggles = $('.toggle');
+
+    toggles.click(function() {
+        $(this).toggleClass('open');
+        toggles.not(this).removeClass('open');
     });
 
     /* Nav Breakpoints */
 
+    var body = $('body');
+
     var calculateWidthNeeded = function() {
-        navbar.addClass('desktop');
-        navbar.removeClass('mobile');
+        body.addClass('desktop');
+        body.removeClass('mobile');
 
         var needed = 0;
         $('.ohNav > li').each(function() {
@@ -44,12 +49,12 @@ jQuery(document).ready(function($) {
 
     var setMobileClass = function(needed) {
         if ($('.ohNavbar').width() < needed) {
-            navbar.addClass('mobile');
-            navbar.removeClass('desktop');
-            $('.ohNav').hide();
+            body.addClass('mobile');
+            body.removeClass('desktop');
         } else {
-            navbar.addClass('desktop');
-            navbar.removeClass('mobile');
+            body.addClass('desktop');
+            body.removeClass('mobile');
+            $('.toggle').removeClass('open');
             $('.ohNav').show();
         }
     };
