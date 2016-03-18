@@ -81,7 +81,6 @@ jQuery(document).ready(function($) {
         stickyNav();
 
         $(window).on('scroll mousewheel', function() {
-            console.log('trying to be sticky');
             stickyNav();
         });
     }

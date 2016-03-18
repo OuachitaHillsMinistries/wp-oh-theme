@@ -97,7 +97,7 @@ html body {
 	padding:0 5vw 0 5vw;
 }
 
-.ohNavbar.fixed {
+.ohNavbar.desktop.fixed {
 	position:fixed;
 	bottom:auto;
 	top:0;
@@ -176,6 +176,12 @@ html body {
 
 .mobile .ohNav {
 	display:none;
+	position: absolute;
+	top:3rem;
+	left:0;
+	right:0;
+	z-index:100;
+	border-top:1px solid #e7e7e7;
 }
 
 .ohNavbar .burger {
@@ -218,7 +224,8 @@ html body {
 .start li a,
 .academy .section-selector ul,
 .academy .ohNavbar,
-.academy .ohNav li ul {
+.academy .ohNav li ul,
+.academy .ohNav {
 	background: #23527c;
 }
 
@@ -234,7 +241,8 @@ html body {
 .college .container-fluid,
 .college .section-selector ul,
 .college .ohNavbar,
-.college .ohNav li ul {
+.college .ohNav li ul,
+.college .ohNav {
 	background: #2d5a3a;
 }
 
