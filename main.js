@@ -24,6 +24,12 @@ jQuery(document).ready(function($) {
         e.preventDefault();
     });
 
+    $('.burger').click(function() {
+        $('.ohNav').slideToggle();
+    });
+
+    /* Nav Breakpoints */
+
     var calculateWidthNeeded = function() {
         navbar.addClass('desktop');
         navbar.removeClass('mobile');

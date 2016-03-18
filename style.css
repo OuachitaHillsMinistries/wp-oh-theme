@@ -178,6 +178,22 @@ html body {
 	display:none;
 }
 
+.ohNavbar .burger {
+	display:block;
+	background-color:#e7e7e7;
+	height:3rem;
+	line-height:3rem;
+	margin-left:1px;
+}
+
+.ohNavbar .burger .dashicons-menu {
+	line-height:3rem;
+}
+
+.desktop .burger {
+	display:none;
+}
+
 /* === Section Colors === */
 
 .top-header,
@@ -204,7 +220,8 @@ html body {
 
 .academy .section-selector > a,
 .academy .ohNav > li > a:focus,
-.academy .ohNavbar a:hover {
+.academy .ohNavbar a:hover,
+.academy .ohNavbar .burger {
 	color: #23527c;
 }
 
@@ -219,7 +236,8 @@ html body {
 
 .college .section-selector > a,
 .college .ohNav > li > a:focus,
-.college .ohNavbar a:hover {
+.college .ohNavbar a:hover,
+.college .ohNavbar .burger {
 	color:#2d5a3a;
 }
 

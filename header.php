@@ -29,6 +29,8 @@ $section = getTopLevelSection();
                 <ul class="ohNav">
                     <?php echo getNavPageList(); ?>
                 </ul>
+
+                <a href="#" class="burger"><span class="dashicons dashicons-menu"></span> Navigation</a>
             </nav>
 		</div>
 
