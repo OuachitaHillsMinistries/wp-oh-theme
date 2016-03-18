@@ -453,6 +453,10 @@ body.home {
 	display: table;
 }
 
+.subpages.nav-pills li {
+	margin-left:-15px;
+}
+
 .entry-content .text {
 	-moz-column-width: auto;
 	-webkit-column-width: auto;
