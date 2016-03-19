@@ -269,6 +269,19 @@ html body {
 	padding:0;
 }
 
+.mobile .ohNav .page_item_has_children > a:hover,
+.mobile .ohNav .page_item_has_children > a:focus {
+	cursor: default;
+	background-color:transparent;
+	color:#e7e7e7;
+	text-decoration:none;
+}
+
+.mobile .ohNav .page_item_has_children > a {
+	font-weight:bold;
+	font-size:2rem;
+}
+
 /* === Section Colors === */
 
 .top-header,
