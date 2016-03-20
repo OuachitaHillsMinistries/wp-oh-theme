@@ -100,7 +100,7 @@ html body {
 	padding:0 5vw 0 5vw;
 }
 
-.ohNavbar.desktop.fixed {
+.desktop .ohNavbar.fixed {
 	position:fixed;
 	bottom:auto;
 	top:0;
