@@ -195,23 +195,23 @@ function makeImageList( $images, $lightboxPrefix, $thumbSize, $classes ) {
 
 function ohRecentPosts($category) {
 	$catId = get_category_id($category);
-	$posts = wp_get_recent_posts(array(
+	$recentPosts = wp_get_recent_posts(array(
 		'numberposts' => 6,
 		'category' => $catId
 	));
 	$linkList = '';
-	foreach ($posts as $post) {
-		$url = get_permalink($post);
-		$img = get_the_post_thumbnail($post['ID'], 'thumbnail');
+	foreach ($recentPosts as $recentPost) {
+		$url = get_permalink($recentPost['ID']);
+		$img = get_the_post_thumbnail($recentPost['ID'], 'thumbnail');
 		$img = ($img) ? $img : '<span class="dashicons dashicons-camera"></span>';
-		$title = $post['post_title'];
+		$title = $recentPost['post_title'];
 		$format = '<li><a href="%s"><span class="thumbnail">%s</span><span class="title">%s</span></a></li>';
 		$linkList .= sprintf( $format, $url, $img, $title );
 	}
 	$categoryUrl = get_category_link($catId);
 	$linkList .= "<li><a href='$categoryUrl' class=\"more\">More News...</a></li>";
-	$posts = "<ul>$linkList</ul>";
-	echo sprintf('<div class="recent-posts"><h2>News</h2>%s</div>', $posts);
+	$recentPosts = "<ul>$linkList</ul>";
+	echo sprintf('<div class="recent-posts"><h2>News</h2>%s</div>', $recentPosts);
 }
 
 function get_category_id($cat_name){
