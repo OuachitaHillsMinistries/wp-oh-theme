@@ -451,6 +451,10 @@ body.home {
 	overflow:hidden;
 }
 
+.entry-meta {
+	margin-bottom:1em;
+}
+
 .category .attachment-post-thumbnail {
 	width: 15vw;
 	float: left;
