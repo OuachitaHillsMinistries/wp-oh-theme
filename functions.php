@@ -572,6 +572,19 @@ class bootstrapPillsWalker extends Walker_Page {
 	}
 }
 
+/* === Hero Images === */
+
+function heroImage($post)
+{
+	$heroUrl = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+	if ($heroUrl) {
+		$position = get_post_meta($post->ID, '_ohHeroPosition')[0];
+		$position = ($position) ? $position . '%' : 0;
+		$atts = "background-image:url('$heroUrl'); background-position:0 $position;";
+		echo "<div style=\"$atts\" class=\"header jumbotron\"></div>";
+	}
+}
+
 /* === Dependencies Management === */
 
 require_once( 'php-utils/wp_bootstrap_navwalker.php' );
