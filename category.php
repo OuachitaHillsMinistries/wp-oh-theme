@@ -5,7 +5,8 @@
 <?php if ( '' != category_description() ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . category_description() . '</div>' ); ?>
 </header>
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-<?php get_template_part( 'entry' ); ?>
+    <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+    <?php get_template_part( 'entry' ); ?>
 <?php endwhile; endif; ?>
 <?php get_template_part( 'nav', 'below' ); ?>
 </section>

@@ -448,6 +448,14 @@ body.home {
 .plural {
 	max-width:40em;
 	margin-bottom:2em;
+	overflow:hidden;
+}
+
+.category .attachment-post-thumbnail {
+	width: 15vw;
+	float: left;
+	margin-right: 2em;
+	margin-top: 2em;
 }
 
 /* === Single Posts === */
