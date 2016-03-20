@@ -52,16 +52,11 @@ jQuery(document).ready(function ($) {
     function initDragWindow() {
         var drag_window = $('.drag');
         drag_window.css({
-            'height': image.width / 4,
-            'background-image': 'url(' + image.url + ')'
+            'height': image.width / 4
         });
         drag_window.draggable({
             containment: "#featuredWrapper",
-            axis: "y",
-            drag: function () {
-                var percent = calculatePercent();
-                drag_window.css('background-position','0 ' + percent + '%');
-            }
+            axis: "y"
         })
     }
 
