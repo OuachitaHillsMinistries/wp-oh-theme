@@ -456,6 +456,18 @@ body.home {
 	margin-bottom: 1em;
 }
 
+.entry-footer {
+	margin-bottom:1em;
+}
+
+.nav-previous {
+	float:left;
+}
+
+.nav-next {
+	float:right;
+}
+
 /* === Misc Pages === */
 
 #content {
