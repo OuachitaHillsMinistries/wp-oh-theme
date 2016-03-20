@@ -31,6 +31,10 @@ jQuery(document).ready(function($) {
         toggles.not(this).removeClass('open');
     });
 
+    $('.burger').click(function() {
+       $('#content').toggle();
+    });
+
     /* Nav Breakpoints */
 
     var body = $('body');
@@ -56,6 +60,7 @@ jQuery(document).ready(function($) {
             body.removeClass('mobile');
             $('.toggle').removeClass('open');
             $('.ohNav').show();
+            $('#content').show();
         }
     };
 
