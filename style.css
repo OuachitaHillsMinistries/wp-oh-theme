@@ -450,10 +450,21 @@ body.home {
 	margin-bottom:2em;
 }
 
+/* === Single Posts === */
+
+.single.post header {
+	margin-bottom: 1em;
+}
+
 /* === Misc Pages === */
 
-.single.post header, #content {
+#content {
 	margin: 5vw;
+}
+
+#content img {
+	max-width:100%;
+	height:auto;
 }
 
 /* === Pages === */
@@ -607,7 +618,7 @@ body {
 	margin-bottom: 3.5em;
 }
 
-.footer {
+#footer {
 	padding: 1em 5vw;
 	clear: both;
 	position: absolute;
