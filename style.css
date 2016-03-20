@@ -168,7 +168,7 @@ html body {
 .section-selector ul,
 .desktop .ohNav li ul {
 	visibility:hidden;
-	transition: visibility 0.1s;
+	transition: visibility 0.01s;
 	padding-left:0;
 	min-width:100%;
 	position: absolute;

@@ -160,7 +160,7 @@ function bodyClasses() {
 	if (is_home()) {
 		$classes .= ' home';
 	}
-	body_class($classes);
+	body_class($classes . ' desktop');
 }
 
 /* === Image Galleries === */
