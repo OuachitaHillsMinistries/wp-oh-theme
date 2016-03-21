@@ -21,6 +21,9 @@ jQuery(document).ready(function($) {
     /* Nav Setup */
 
     $('.ohNav > li.page_item_has_children > a, .section-selector > a').click(function(e){
+        // This can probably be done in PHP. For section-selector, there should be a way to make focus work on an
+        // element other than <a>, perhaps by adding a form-related attribute.
+
         e.preventDefault();
     });
 

@@ -157,7 +157,7 @@ html body {
 .desktop .ohNav > li > a:focus,
 .ohNavbar a:hover,
 .current_page_item,
-.current_page_ancestor {
+.desktop .current_page_ancestor {
 	background-color:#e7e7e7;
 	text-decoration: none;
 }
@@ -301,7 +301,7 @@ html body {
 .ohNavbar a:hover,
 .ohNavbar .toggle,
 .current_page_item > a,
-.current_page_ancestor > a {
+.desktop .current_page_ancestor > a {
 	color: #3f3f3d;
 }
 
@@ -320,7 +320,7 @@ html body {
 .academy .ohNavbar a:hover,
 .academy .ohNavbar .toggle,
 .academy .current_page_item > a,
-.academy .current_page_ancestor > a {
+.academy.desktop .current_page_ancestor > a {
 	color: #23527c;
 }
 
@@ -343,7 +343,7 @@ html body {
 .college .ohNavbar a:hover,
 .college .ohNavbar .toggle,
 .college .current_page_item > a,
-.college .current_page_ancestor > a {
+.college.desktop .current_page_ancestor > a {
 	color:#2d5a3a;
 }
 
