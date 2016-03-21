@@ -155,7 +155,9 @@ html body {
 }
 
 .desktop .ohNav > li > a:focus,
-.ohNavbar a:hover {
+.ohNavbar a:hover,
+.current_page_item,
+.current_page_ancestor {
 	background-color:#e7e7e7;
 	text-decoration: none;
 }
@@ -297,7 +299,9 @@ html body {
 .section-selector > a,
 .ohNav > li > a:focus,
 .ohNavbar a:hover,
-.ohNavbar .toggle {
+.ohNavbar .toggle,
+.current_page_item > a,
+.current_page_ancestor > a {
 	color: #3f3f3d;
 }
 
@@ -314,7 +318,9 @@ html body {
 .academy .section-selector > a,
 .academy .ohNav > li > a:focus,
 .academy .ohNavbar a:hover,
-.academy .ohNavbar .toggle {
+.academy .ohNavbar .toggle,
+.academy .current_page_item > a,
+.academy .current_page_ancestor > a {
 	color: #23527c;
 }
 
@@ -335,7 +341,9 @@ html body {
 .college .section-selector > a,
 .college .ohNav > li > a:focus,
 .college .ohNavbar a:hover,
-.college .ohNavbar .toggle {
+.college .ohNavbar .toggle,
+.college .current_page_item > a,
+.college .current_page_ancestor > a {
 	color:#2d5a3a;
 }
 
