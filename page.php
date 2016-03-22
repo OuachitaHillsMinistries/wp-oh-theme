@@ -17,10 +17,9 @@
 			<?php the_content(); ?>
 			<?php edit_post_link(); ?>
 			<div class="entry-links"><?php wp_link_pages(); ?></div>
+			<?php ohImageGallery(); ?>
 		</div>
 		<?php
-		ohImageGallery();
-
 		if (isCollegeHome() || isAcademyHome()) {
 			ohRecentPosts(getTopLevelSection());
 		}

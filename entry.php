@@ -15,7 +15,11 @@
 		} ?>
 	</header>
 	<?php get_template_part( 'entry', ( is_archive() || is_search() ? 'summary' : 'content' ) ); ?>
-	<?php if ( ! is_search() ) {
+	<?php
+	if (is_singular()) ohImageGallery();
+
+	if ( ! is_search() ) {
 		get_template_part( 'entry-footer' );
-	} ?>
+	}
+	?>
 </article>
