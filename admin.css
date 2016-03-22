@@ -33,3 +33,9 @@
 .cropperControls p {
 	margin-top:0;
 }
+
+.ohAdminNotice ul {
+	list-style: bullet;
+	list-style-type: unset;
+	padding-left:1em;
+}
