@@ -210,15 +210,27 @@ function ohEditScreen__warning() {
 		return;
 
 	$class = 'notice notice-warning ohAdminNotice';
-	$message = '<strong>Warning!</strong> Content on this page may not be accessible in the front end. Pages are inaccessible if:';
-	$reasons =
-		'<ul>
-		<li>Page is a college or academy subpage with children.</li>
-		<li>Page is a top-level page other than the college or academy home page and has children.</li>
-		<li>Page is more than three layers deep.</li>
-		</ul>';
+	$message =
+		'<strong>Warning!</strong> Content on this page may not be accessible in the front end due to the
+		following reason(s):';
+	$reasons = '';
 
-	printf( '<div class="%1$s"><p>%2$s%3$s</p></div>', $class, $message, $reasons );
+	$topSection = getTopLevelSection();
+	$topLevelIsSection = $topSection == 'College' || $topSection == 'Academy';
+
+	if ($hasChildren && $topLevelIsSection) {
+		$reasons .= '<li>Page is a college or academy subpage with children.</li>';
+	}
+
+	if ($hasChildren && count($post->ancestors) == 0) {
+		$reasons .= '<li>Page is a top-level page other than the college or academy home page and has children.</li>';
+	}
+
+	if (!$isShallow) {
+		$reasons .= '<li>Page is more than three layers deep.</li>';
+	}
+
+	printf( '<div class="%1$s"><p>%2$s<ul>%3$s</ul></p></div>', $class, $message, $reasons );
 }
 add_action( 'admin_notices', 'ohEditScreen__warning' );
 
