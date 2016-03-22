@@ -214,68 +214,13 @@ function ohEditScreen__warning() {
 	$reasons =
 		'<ul>
 		<li>Page is a college or academy subpage with children.</li>
+		<li>Page is a top-level page other than the college or academy home page and has children.</li>
 		<li>Page is more than three layers deep.</li>
 		</ul>';
 
 	printf( '<div class="%1$s"><p>%2$s%3$s</p></div>', $class, $message, $reasons );
 }
 add_action( 'admin_notices', 'ohEditScreen__warning' );
-
-function get_depth($id = '', $depth = '', $i = 0)
-{
-	global $wpdb;
-
-	if($depth == '')
-	{
-		if(is_page())
-		{
-			if($id == '')
-			{
-				global $post;
-				$id = $post->ID;
-			}
-			$depth = $wpdb->get_var("SELECT post_parent FROM $wpdb->posts WHERE ID = '".$id."'");
-			return get_depth($id, $depth, $i);
-		}
-		elseif(is_category())
-		{
-
-			if($id == '')
-			{
-				global $cat;
-				$id = $cat;
-			}
-			$depth = $wpdb->get_var("SELECT parent FROM $wpdb->term_taxonomy WHERE term_id = '".$id."'");
-			return get_depth($id, $depth, $i);
-		}
-		elseif(is_single())
-		{
-			if($id == '')
-			{
-				$category = get_the_category();
-				$id = $category[0]->cat_ID;
-			}
-			$depth = $wpdb->get_var("SELECT parent FROM $wpdb->term_taxonomy WHERE term_id = '".$id."'");
-			return get_depth($id, $depth, $i);
-		}
-	}
-	elseif($depth == '0')
-	{
-		return $i;
-	}
-	elseif(is_single() || is_category())
-	{
-		$depth = $wpdb->get_var("SELECT parent FROM $wpdb->term_taxonomy WHERE term_id = '".$depth."'");
-		$i++;
-		return get_depth($id, $depth, $i);
-	}
-	elseif(is_page())
-	{
-		$depth = $wpdb->get_var("SELECT post_parent FROM $wpdb->posts WHERE ID = '".$depth."'");
-		$i++;
-		return get_depth($id, $depth, $i);
-	}
-}
 
 /* === Recent Posts === */
 
